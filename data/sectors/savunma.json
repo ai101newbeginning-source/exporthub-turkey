@@ -1,0 +1,17 @@
+{
+  "id": "savunma",
+  "ad": "Savunma ve Havacılık",
+  "toplamIhracat2024": 5.4,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 38.5,
+  "topIller": ["Ankara", "İstanbul", "Kocaeli", "Bursa", "İzmir"],
+  "topUlkeler": ["ABD", "Suudi Arabistan", "BAE", "Pakistan", "Azerbaycan"],
+  "urunGruplari": [
+    { "ad": "İnsansız Hava Araçları (İHA/SİHA)", "pay": 34 },
+    { "ad": "Kara Sistemleri ve Zırhlı Araçlar", "pay": 28 },
+    { "ad": "Deniz Platformları", "pay": 16 },
+    { "ad": "Elektronik Harp & Yazılım", "pay": 14 },
+    { "ad": "Havacılık Bakım & Parça", "pay": 8 }
+  ],
+  "aciklama": "Türkiye savunma sanayii, Bayraktar TB2'den ASELSAN elektronik sistemlerine kadar küresel çapta tanınan bir ihracat portföyüne ulaştı. 2024'te %38,5 büyümeyle en yüksek ivmeyi yakalayan sektör. 40'tan fazla ülkeye ihracat gerçekleştirildi."
+}

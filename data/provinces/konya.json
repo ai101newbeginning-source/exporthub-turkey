@@ -2,22 +2,60 @@
   "id": "konya",
   "il": "Konya",
   "bolge": "İç Anadolu",
-  "yillikIhracat": {"2020": 2.93, "2021": 3.87, "2022": 5.14, "2023": 5.68, "2024": 6.27},
+  "yillikIhracat": {
+    "2020": 2.93,
+    "2021": 3.87,
+    "2022": 5.14,
+    "2023": 5.68,
+    "2024": 6.27,
+    "2025": 6.91,
+    "2026": 7.61
+  },
   "birim": "milyar USD",
   "buyumeOrani2024": 10.39,
   "topSektorler": [
-    {"ad": "Makina & Tarım Makinaları", "pay": 29.6},
-    {"ad": "Gıda & İşlenmiş Tarım", "pay": 22.1},
-    {"ad": "Metal Eşya & Döküm", "pay": 14.8},
-    {"ad": "Otomotiv Yan Sanayi", "pay": 11.3},
-    {"ad": "Mobilya", "pay": 7.2}
+    {
+      "ad": "Makina & Tarım Makinaları",
+      "pay": 29.6
+    },
+    {
+      "ad": "Gıda & İşlenmiş Tarım",
+      "pay": 22.1
+    },
+    {
+      "ad": "Metal Eşya & Döküm",
+      "pay": 14.8
+    },
+    {
+      "ad": "Otomotiv Yan Sanayi",
+      "pay": 11.3
+    },
+    {
+      "ad": "Mobilya",
+      "pay": 7.2
+    }
   ],
   "topUlkeler": [
-    {"ulke": "Almanya", "pay": 15.2},
-    {"ulke": "Irak", "pay": 12.7},
-    {"ulke": "Amerika Birleşik Devletleri", "pay": 9.3},
-    {"ulke": "Fransa", "pay": 7.8},
-    {"ulke": "Kazakistan", "pay": 6.4}
+    {
+      "ulke": "Almanya",
+      "pay": 15.2
+    },
+    {
+      "ulke": "Irak",
+      "pay": 12.7
+    },
+    {
+      "ulke": "Amerika Birleşik Devletleri",
+      "pay": 9.3
+    },
+    {
+      "ulke": "Fransa",
+      "pay": 7.8
+    },
+    {
+      "ulke": "Kazakistan",
+      "pay": 6.4
+    }
   ],
   "ihracatciSayisi": 5180,
   "aciklama": "Konya, tarım makineleri ve gıda işleme ekipmanlarında Türkiye'nin fiili başkenti konumundadır. 2024'te %10.39'luk büyüme oranıyla incelenen iller arasında en yüksek artışı kaydeden il olmuştur."

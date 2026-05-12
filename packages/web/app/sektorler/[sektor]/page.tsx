@@ -26,7 +26,7 @@ function getSector(id: string): SectorData | null {
 }
 
 export async function generateStaticParams() {
-  return ["otomotiv", "tekstil", "makine", "gida", "kimya", "demir-celik"].map((s) => ({ sektor: s }));
+  return ["otomotiv", "tekstil", "makine", "gida", "kimya", "demir-celik", "savunma", "elektronik", "insaat-malzemeleri"].map((s) => ({ sektor: s }));
 }
 
 export async function generateMetadata({
@@ -62,11 +62,16 @@ const COUNTRY_CONTEXT: Record<string, string> = {
   "İtalya": "Fiat-Stellantis tedarik zinciri",
   "İspanya": "SEAT üretim ortaklığı",
   "Romanya": "Dacia-Renault köprü pazarı",
-  "ABD": "Türk tekstil için önde gelen pazar",
-  "İngiltere": "Fast fashion tedarikçiliği",
+  "ABD": "NATO tedarik zinciri ve stratejik ortak",
+  "İngiltere": "Fast fashion ve savunma tedarikçiliği",
   "Irak": "Bölgesel distribütörlük merkezi",
   "BAE": "Körfez yeniden ihracat noktası",
   "Hollanda": "Avrupa liman dağıtım merkezi",
+  "Suudi Arabistan": "Körfez savunma harcamaları",
+  "Pakistan": "Bayraktar TB2 alımı ve stratejik ortaklık",
+  "Azerbaycan": "Savunma ve enerji köprüsü",
+  "Rusya": "Seramik ve inşaat malzemesi ithalatçısı",
+  "Libya": "Kuzey Afrika altyapı projeleri",
 };
 
 export default function SektorPage({ params }: { params: { sektor: string } }) {

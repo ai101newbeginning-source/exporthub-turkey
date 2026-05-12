@@ -44,7 +44,7 @@ export default function VerilerPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8 animate-fade-up">
-        <div className="text-turkish-red text-sm font-semibold mb-2">VERİ PORTALI · MART 2025</div>
+        <div className="text-turkish-red text-sm font-semibold mb-2">VERİ PORTALI · MAYIS 2026</div>
         <h1 className="text-4xl font-extrabold text-white mb-3">
           Türkiye İhracat Verileri
         </h1>
@@ -116,7 +116,7 @@ export default function VerilerPage() {
                     ${latestValue.toFixed(1)}B
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
-                    2024 yıllık ihracat (milyar USD)
+                    {Object.keys(p.yillikIhracat).at(-1)} yıllık ihracat (milyar USD)
                   </div>
                 </div>
 

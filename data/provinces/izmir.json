@@ -7,22 +7,64 @@
     "2021": 10.3,
     "2022": 12.4,
     "2023": 13.8,
-    "2024": 15.1
+    "2024": 15.1,
+    "2025": 16.5,
+    "2026": 18.0
   },
   "birim": "milyar USD",
   "topSektorler": [
-    { "ad": "Tarım ve Gıda", "pay": 26.4, "birim": "%" },
-    { "ad": "Kimyasal Maddeler", "pay": 19.7, "birim": "%" },
-    { "ad": "Tekstil", "pay": 16.3, "birim": "%" },
-    { "ad": "Makine ve Teçhizat", "pay": 14.8, "birim": "%" },
-    { "ad": "Elektronik", "pay": 22.8, "birim": "%" }
+    {
+      "ad": "Tarım ve Gıda",
+      "pay": 26.4,
+      "birim": "%"
+    },
+    {
+      "ad": "Kimyasal Maddeler",
+      "pay": 19.7,
+      "birim": "%"
+    },
+    {
+      "ad": "Tekstil",
+      "pay": 16.3,
+      "birim": "%"
+    },
+    {
+      "ad": "Makine ve Teçhizat",
+      "pay": 14.8,
+      "birim": "%"
+    },
+    {
+      "ad": "Elektronik",
+      "pay": 22.8,
+      "birim": "%"
+    }
   ],
   "topUlkeler": [
-    { "ulke": "ABD", "pay": 14.2, "birim": "%" },
-    { "ulke": "Almanya", "pay": 12.6, "birim": "%" },
-    { "ulke": "İtalya", "pay": 9.3, "birim": "%" },
-    { "ulke": "İngiltere", "pay": 8.7, "birim": "%" },
-    { "ulke": "Fransa", "pay": 7.1, "birim": "%" }
+    {
+      "ulke": "ABD",
+      "pay": 14.2,
+      "birim": "%"
+    },
+    {
+      "ulke": "Almanya",
+      "pay": 12.6,
+      "birim": "%"
+    },
+    {
+      "ulke": "İtalya",
+      "pay": 9.3,
+      "birim": "%"
+    },
+    {
+      "ulke": "İngiltere",
+      "pay": 8.7,
+      "birim": "%"
+    },
+    {
+      "ulke": "Fransa",
+      "pay": 7.1,
+      "birim": "%"
+    }
   ],
   "buyumeOrani2024": 9.4,
   "ihracatciSayisi": 7300,

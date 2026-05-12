@@ -41,6 +41,7 @@ function getAllProvinces(): ProvinceData[] {
 const SEKTOR_SLUG: Record<string, string | null> = {
   "Tekstil ve Konfeksiyon": "tekstil",
   "Tekstil": "tekstil",
+  "Tekstil ve Halı": "tekstil",
   "Ev Tekstili & Havlu": "tekstil",
   "Hazır Giyim": "tekstil",
   "Hazır Giyim & Tekstil": "tekstil",
@@ -51,14 +52,22 @@ const SEKTOR_SLUG: Record<string, string | null> = {
   "Makina & Tarım Makinaları": "makine",
   "Gıda ve Tarım": "gida",
   "Gıda & İşlenmiş Tarım": "gida",
+  "Gıda ve Fıstık Ürünleri": "gida",
   "Taze Sebze & Meyve": "gida",
   "Tarım Ürünleri & Tahıl": "gida",
   "Kimyasallar & Plastik": "kimya",
   "Kimyasallar & Gübre": "kimya",
   "Kimyasallar": "kimya",
   "Plastik & Kauçuk": "kimya",
+  "Plastik ve Ambalaj": "kimya",
   "Demir-Çelik": "demir-celik",
+  "Savunma & Havacılık": "savunma",
+  "Savunma Sanayii": "savunma",
+  "Elektronik & Elektrik": "elektronik",
+  "Elektronik ve Elektrikli": "elektronik",
   "Mücevherat": null,
+  "Metal Ürünler": null,
+  "Kimyasal Maddeler": "kimya",
 };
 
 // İlgili rehberler — il özelinde
@@ -80,8 +89,8 @@ export async function generateMetadata({
   if (!province) return { title: "İl Bulunamadı" };
   const latest = Object.values(province.yillikIhracat).at(-1)?.toFixed(1);
   return {
-    title: `${province.il} İhracat Verileri 2024 — Sektörler, Pazarlar, Rakamlar`,
-    description: `${province.il} ilinin 2024 ihracat verileri. ${province.topSektorler[0]?.ad ?? ""} başta olmak üzere ${province.topSektorler.length} sektörde $${latest} milyar USD ihracat. TÜİK/TİM verileri.`,
+    title: `${province.il} İhracat Verileri 2024-2026 — Sektörler, Pazarlar, Rakamlar`,
+    description: `${province.il} ilinin ihracat verileri (2020-2026). ${province.topSektorler[0]?.ad ?? ""} başta olmak üzere ${province.topSektorler.length} sektörde $${latest} milyar USD ihracat. TÜİK/TİM verileri.`,
   };
 }
 
@@ -98,6 +107,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
     year,
     value,
   }));
+  const latestYear = Object.keys(province.yillikIhracat).at(-1) ?? "2026";
   const latestValue = Object.values(province.yillikIhracat).at(-1) ?? 0;
   const ilkValue = Object.values(province.yillikIhracat).at(0) ?? 0;
   const toplamBuyume = (((latestValue - ilkValue) / ilkValue) * 100).toFixed(0);
@@ -119,7 +129,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
       <div className="flex items-center gap-2 mb-6">
         <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-3 py-1 rounded-full">
           <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-          Son güncelleme: Mart 2025
+          Son güncelleme: Mayıs 2026
         </span>
         <span className="text-xs text-slate-600">Kaynak: TÜİK · TİM · Ticaret Bakanlığı</span>
       </div>
@@ -138,7 +148,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
           </div>
           <div className="text-right">
             <div className="text-4xl font-extrabold text-white">${latestValue.toFixed(1)}B</div>
-            <div className="text-sm text-slate-400">2024 yıllık ihracat</div>
+            <div className="text-sm text-slate-400">{latestYear} yıllık ihracat</div>
             <div className="text-emerald-400 font-semibold">
               +{province.buyumeOrani2024}% büyüme
             </div>
@@ -159,7 +169,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-semibold text-white">Yıllık İhracat (milyar USD)</h2>
             <span className="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
-              +{toplamBuyume}% (5 yıl)
+              +{toplamBuyume}% (2020-{latestYear})
             </span>
           </div>
           <div className="space-y-3">
@@ -313,10 +323,10 @@ export default function IlPage({ params }: { params: { il: string } }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Dataset",
-            name: `${province.il} İhracat Verileri 2024`,
+            name: `${province.il} İhracat Verileri 2020-2026`,
             description: province.aciklama,
             publisher: { "@type": "Organization", name: "ExportHub Türkiye" },
-            temporalCoverage: "2020/2024",
+            temporalCoverage: "2020/2026",
             spatialCoverage: province.il,
           }),
         }}

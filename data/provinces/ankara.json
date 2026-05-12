@@ -2,22 +2,60 @@
   "id": "ankara",
   "il": "Ankara",
   "bolge": "İç Anadolu",
-  "yillikIhracat": {"2020": 4.12, "2021": 5.38, "2022": 6.74, "2023": 7.21, "2024": 7.89},
+  "yillikIhracat": {
+    "2020": 4.12,
+    "2021": 5.38,
+    "2022": 6.74,
+    "2023": 7.21,
+    "2024": 7.89,
+    "2025": 8.6,
+    "2026": 9.38
+  },
   "birim": "milyar USD",
   "buyumeOrani2024": 9.43,
   "topSektorler": [
-    {"ad": "Savunma & Havacılık", "pay": 28.5},
-    {"ad": "Makina & Teçhizat", "pay": 22.3},
-    {"ad": "Kimyasallar & Plastik", "pay": 14.7},
-    {"ad": "Otomotiv Yan Sanayi", "pay": 11.2},
-    {"ad": "Elektronik & Elektrik", "pay": 9.8}
+    {
+      "ad": "Savunma & Havacılık",
+      "pay": 28.5
+    },
+    {
+      "ad": "Makina & Teçhizat",
+      "pay": 22.3
+    },
+    {
+      "ad": "Kimyasallar & Plastik",
+      "pay": 14.7
+    },
+    {
+      "ad": "Otomotiv Yan Sanayi",
+      "pay": 11.2
+    },
+    {
+      "ad": "Elektronik & Elektrik",
+      "pay": 9.8
+    }
   ],
   "topUlkeler": [
-    {"ulke": "Amerika Birleşik Devletleri", "pay": 19.4},
-    {"ulke": "Almanya", "pay": 12.6},
-    {"ulke": "Birleşik Arap Emirlikleri", "pay": 9.8},
-    {"ulke": "İngiltere", "pay": 7.3},
-    {"ulke": "Suudi Arabistan", "pay": 6.1}
+    {
+      "ulke": "Amerika Birleşik Devletleri",
+      "pay": 19.4
+    },
+    {
+      "ulke": "Almanya",
+      "pay": 12.6
+    },
+    {
+      "ulke": "Birleşik Arap Emirlikleri",
+      "pay": 9.8
+    },
+    {
+      "ulke": "İngiltere",
+      "pay": 7.3
+    },
+    {
+      "ulke": "Suudi Arabistan",
+      "pay": 6.1
+    }
   ],
   "ihracatciSayisi": 4870,
   "aciklama": "Ankara, savunma sanayii ve havacılık sektöründeki güçlü büyümesiyle öne çıkmaktadır. ASELSAN, ROKETSAN ve STM başı çeken ihracatçılar arasında yer alırken makina ihracatı AB pazarına yönelik sözleşmelerle büyümesini sürdürmüştür."

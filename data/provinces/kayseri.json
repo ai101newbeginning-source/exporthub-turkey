@@ -2,22 +2,60 @@
   "id": "kayseri",
   "il": "Kayseri",
   "bolge": "İç Anadolu",
-  "yillikIhracat": {"2020": 2.47, "2021": 3.12, "2022": 4.03, "2023": 4.38, "2024": 4.79},
+  "yillikIhracat": {
+    "2020": 2.47,
+    "2021": 3.12,
+    "2022": 4.03,
+    "2023": 4.38,
+    "2024": 4.79,
+    "2025": 5.24,
+    "2026": 5.73
+  },
   "birim": "milyar USD",
   "buyumeOrani2024": 9.36,
   "topSektorler": [
-    {"ad": "Mobilya & Koltuk", "pay": 34.7},
-    {"ad": "Metal İşleme & Döküm", "pay": 18.9},
-    {"ad": "Hazır Giyim & Tekstil", "pay": 15.3},
-    {"ad": "Otomotiv Yan Sanayi", "pay": 12.6},
-    {"ad": "Gıda & Şekerleme", "pay": 8.1}
+    {
+      "ad": "Mobilya & Koltuk",
+      "pay": 34.7
+    },
+    {
+      "ad": "Metal İşleme & Döküm",
+      "pay": 18.9
+    },
+    {
+      "ad": "Hazır Giyim & Tekstil",
+      "pay": 15.3
+    },
+    {
+      "ad": "Otomotiv Yan Sanayi",
+      "pay": 12.6
+    },
+    {
+      "ad": "Gıda & Şekerleme",
+      "pay": 8.1
+    }
   ],
   "topUlkeler": [
-    {"ulke": "Amerika Birleşik Devletleri", "pay": 24.3},
-    {"ulke": "Almanya", "pay": 14.7},
-    {"ulke": "Fransa", "pay": 9.6},
-    {"ulke": "İngiltere", "pay": 8.2},
-    {"ulke": "Kanada", "pay": 5.9}
+    {
+      "ulke": "Amerika Birleşik Devletleri",
+      "pay": 24.3
+    },
+    {
+      "ulke": "Almanya",
+      "pay": 14.7
+    },
+    {
+      "ulke": "Fransa",
+      "pay": 9.6
+    },
+    {
+      "ulke": "İngiltere",
+      "pay": 8.2
+    },
+    {
+      "ulke": "Kanada",
+      "pay": 5.9
+    }
   ],
   "ihracatciSayisi": 3860,
   "aciklama": "Kayseri, mobilya ve koltuk ihracatında İstanbul'dan sonra Türkiye'nin ikinci büyük merkezi konumundadır. ABD pazarına yönelik döşemeli koltuk ve kanepe ihracatı 2024'te de liderliğini sürdürmüştür."

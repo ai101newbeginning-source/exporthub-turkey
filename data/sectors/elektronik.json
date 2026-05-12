@@ -1,0 +1,17 @@
+{
+  "id": "elektronik",
+  "ad": "Elektronik ve Elektrikli Ürünler",
+  "toplamIhracat2024": 11.2,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 12.4,
+  "topIller": ["İstanbul", "Ankara", "Kocaeli", "Bursa", "İzmir"],
+  "topUlkeler": ["Almanya", "İngiltere", "ABD", "Hollanda", "Fransa"],
+  "urunGruplari": [
+    { "ad": "Beyaz Eşya ve Ev Elektroniği", "pay": 38 },
+    { "ad": "Endüstriyel Elektronik & Otomasyon", "pay": 27 },
+    { "ad": "Güç Elektroniği & Transformatör", "pay": 18 },
+    { "ad": "Tüketici Elektroniği & Aksesuar", "pay": 10 },
+    { "ad": "Medikal Cihaz & Ekipman", "pay": 7 }
+  ],
+  "aciklama": "Türkiye, Avrupa'nın en büyük beyaz eşya üreticisi konumuyla elektronik ihracatında kritik oyuncu. BSH, Arçelik ve Vestel küresel tedarik zincirinin bel kemiğini oluşturuyor. Endüstriyel otomasyon ve güç elektroniği segmentleri 2024'te öne çıktı."
+}

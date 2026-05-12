@@ -2,22 +2,60 @@
   "id": "antalya",
   "il": "Antalya",
   "bolge": "Akdeniz",
-  "yillikIhracat": {"2020": 1.84, "2021": 2.31, "2022": 3.07, "2023": 3.42, "2024": 3.76},
+  "yillikIhracat": {
+    "2020": 1.84,
+    "2021": 2.31,
+    "2022": 3.07,
+    "2023": 3.42,
+    "2024": 3.76,
+    "2025": 4.13,
+    "2026": 4.53
+  },
   "birim": "milyar USD",
   "buyumeOrani2024": 9.94,
   "topSektorler": [
-    {"ad": "Taze Sebze & Meyve", "pay": 31.2},
-    {"ad": "Tekstil & Hazır Giyim", "pay": 18.6},
-    {"ad": "Seracılık Ürünleri", "pay": 14.9},
-    {"ad": "Mermer & Doğal Taş", "pay": 12.4},
-    {"ad": "Balıkçılık & Su Ürünleri", "pay": 7.5}
+    {
+      "ad": "Taze Sebze & Meyve",
+      "pay": 31.2
+    },
+    {
+      "ad": "Tekstil & Hazır Giyim",
+      "pay": 18.6
+    },
+    {
+      "ad": "Seracılık Ürünleri",
+      "pay": 14.9
+    },
+    {
+      "ad": "Mermer & Doğal Taş",
+      "pay": 12.4
+    },
+    {
+      "ad": "Balıkçılık & Su Ürünleri",
+      "pay": 7.5
+    }
   ],
   "topUlkeler": [
-    {"ulke": "Rusya Federasyonu", "pay": 18.7},
-    {"ulke": "Almanya", "pay": 13.4},
-    {"ulke": "Hollanda", "pay": 10.2},
-    {"ulke": "Ukrayna", "pay": 7.6},
-    {"ulke": "İngiltere", "pay": 6.9}
+    {
+      "ulke": "Rusya Federasyonu",
+      "pay": 18.7
+    },
+    {
+      "ulke": "Almanya",
+      "pay": 13.4
+    },
+    {
+      "ulke": "Hollanda",
+      "pay": 10.2
+    },
+    {
+      "ulke": "Ukrayna",
+      "pay": 7.6
+    },
+    {
+      "ulke": "İngiltere",
+      "pay": 6.9
+    }
   ],
   "ihracatciSayisi": 3210,
   "aciklama": "Antalya, seracılık ve taze sebze-meyve ihracatında Türkiye'nin en önemli üslerinden biridir. Mermer ve doğal taş sektörü 2024'te Orta Doğu inşaat projelerinin artmasıyla güçlü büyüme kaydetmiştir."

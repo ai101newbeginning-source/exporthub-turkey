@@ -6,7 +6,7 @@ import { join } from "path";
 export const metadata: Metadata = {
   title: "Türkiye İhracat Sektörleri — Sektör Bazlı Analiz",
   description:
-    "Otomotiv, tekstil, makine ve diğer sektörlerde Türkiye'nin ihracat performansı. TÜİK ve TİM kaynaklı güncel veriler.",
+    "Otomotiv, tekstil, savunma ve 9 sektörde Türkiye'nin ihracat performansı. TÜİK ve TİM kaynaklı 2024-2026 verileri.",
 };
 
 interface SectorData {
@@ -40,6 +40,9 @@ const SEKTOR_RENK: Record<string, string> = {
   gida: "emerald",
   kimya: "sky",
   "demir-celik": "slate",
+  savunma: "red",
+  elektronik: "cyan",
+  "insaat-malzemeleri": "orange",
 };
 
 const RENK_CLASSES: Record<string, { badge: string; bar: string; icon: string }> = {
@@ -72,6 +75,21 @@ const RENK_CLASSES: Record<string, { badge: string; bar: string; icon: string }>
     badge: "text-slate-300 bg-slate-700",
     bar: "bg-slate-400",
     icon: "text-slate-300",
+  },
+  red: {
+    badge: "text-turkish-red bg-red-500/10",
+    bar: "bg-turkish-red",
+    icon: "text-turkish-red",
+  },
+  cyan: {
+    badge: "text-cyan-400 bg-cyan-400/10",
+    bar: "bg-cyan-400",
+    icon: "text-cyan-400",
+  },
+  orange: {
+    badge: "text-orange-400 bg-orange-400/10",
+    bar: "bg-orange-400",
+    icon: "text-orange-400",
   },
 };
 

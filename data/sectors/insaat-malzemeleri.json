@@ -1,0 +1,17 @@
+{
+  "id": "insaat-malzemeleri",
+  "ad": "İnşaat Malzemeleri",
+  "toplamIhracat2024": 8.7,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 6.2,
+  "topIller": ["İstanbul", "Kocaeli", "İzmir", "Ankara", "Bursa"],
+  "topUlkeler": ["Irak", "Rusya", "Azerbaycan", "Libya", "BAE"],
+  "urunGruplari": [
+    { "ad": "Seramik ve Porselen Kaplama", "pay": 31 },
+    { "ad": "Cam ve Cam Ürünleri", "pay": 24 },
+    { "ad": "Çimento ve Bağlayıcılar", "pay": 19 },
+    { "ad": "Metal Profil & Konstrüksiyon", "pay": 16 },
+    { "ad": "Boya, Sıva & Yalıtım", "pay": 10 }
+  ],
+  "aciklama": "Türkiye'nin inşaat malzemeleri sektörü, Orta Doğu ve Orta Asya'daki altyapı yatırımlarından güç alıyor. Seramik ihracatında dünya 3. sırası, cam ihracatında ise Avrupa 2. sırası. Ülke inşaat sektörünün dinamizmi, yerli üreticileri uluslararası projelerde de konumlandırıyor."
+}
