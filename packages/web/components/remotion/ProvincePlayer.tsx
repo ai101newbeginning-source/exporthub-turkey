@@ -34,7 +34,7 @@ export function ProvincePlayer({ province, data, colorScheme = "red" }: Province
         compositionHeight={1080}
         style={{ width: "100%", height: "100%" }}
         autoPlay
-        controls
+        clickToPlay={false}
         loop
       />
     </div>
