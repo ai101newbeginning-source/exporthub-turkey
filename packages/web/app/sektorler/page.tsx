@@ -72,9 +72,9 @@ const RENK_CLASSES: Record<string, { badge: string; bar: string; icon: string }>
     icon: "text-sky-400",
   },
   slate: {
-    badge: "text-slate-300 bg-slate-700",
+    badge: "text-slate-600 bg-slate-200",
     bar: "bg-slate-400",
-    icon: "text-slate-300",
+    icon: "text-slate-600",
   },
   red: {
     badge: "text-turkish-red bg-red-500/10",
@@ -102,7 +102,7 @@ export default function SektorlerPage() {
       {/* Başlık */}
       <div className="mb-10">
         <div className="text-turkish-red text-sm font-semibold mb-2">VERİ ANALİZİ</div>
-        <h1 className="text-4xl font-extrabold text-white mb-3">
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">
           Sektör Bazlı İhracat
         </h1>
         <p className="text-slate-400 max-w-xl">
@@ -114,13 +114,13 @@ export default function SektorlerPage() {
       {/* Özet Bant */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
         <div className="card-dark p-5 text-center">
-          <div className="text-3xl font-extrabold text-white">
+          <div className="text-3xl font-extrabold text-slate-900">
             ${toplamIhracat.toFixed(1)}B
           </div>
           <div className="text-xs text-slate-400 mt-1">Analiz Edilen Sektörler</div>
         </div>
         <div className="card-dark p-5 text-center">
-          <div className="text-3xl font-extrabold text-white">{sectors.length}</div>
+          <div className="text-3xl font-extrabold text-slate-900">{sectors.length}</div>
           <div className="text-xs text-slate-400 mt-1">Sektör</div>
         </div>
         <div className="card-dark p-5 text-center col-span-2 sm:col-span-1">
@@ -141,7 +141,7 @@ export default function SektorlerPage() {
           return (
             <div
               key={sektor.id}
-              className="card-dark p-6 hover:border-slate-600 transition-all"
+              className="card-dark p-6 hover:border-slate-300 transition-all"
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
@@ -157,7 +157,7 @@ export default function SektorlerPage() {
 
               {/* İhracat Hacmi */}
               <div className="mb-4">
-                <div className="text-3xl font-extrabold text-white">
+                <div className="text-3xl font-extrabold text-slate-900">
                   ${sektor.toplamIhracat2024}B
                 </div>
                 <div className="text-xs text-slate-500 mt-0.5">2024 toplam ihracat</div>
@@ -174,8 +174,8 @@ export default function SektorlerPage() {
                 <div className="space-y-2">
                   {sektor.urunGruplari.slice(0, 3).map((u) => (
                     <div key={u.ad} className="flex items-center gap-2">
-                      <span className="text-slate-300 text-xs w-32 truncate">{u.ad}</span>
-                      <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
+                      <span className="text-slate-600 text-xs w-32 truncate">{u.ad}</span>
+                      <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
                         <div
                           className={`h-full ${renkClass.bar} rounded-full`}
                           style={{ width: `${(u.pay / maxPay) * 100}%` }}
@@ -197,7 +197,7 @@ export default function SektorlerPage() {
                     <Link
                       key={il}
                       href={`/veriler/${il.toLowerCase().replace("İ", "i").replace("ı", "i").replace("ş", "s").replace("ğ", "g").replace("ü", "u").replace("ö", "o").replace("ç", "c")}`}
-                      className="text-xs text-slate-400 bg-slate-800 hover:bg-slate-700 px-2 py-0.5 rounded transition-colors"
+                      className="text-xs text-slate-400 bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded transition-colors"
                     >
                       {il}
                     </Link>
@@ -206,7 +206,7 @@ export default function SektorlerPage() {
               </div>
 
               {/* Top Ülkeler + CTA */}
-              <div className="border-t border-slate-800 pt-4 flex items-end justify-between">
+              <div className="border-t border-slate-200 pt-4 flex items-end justify-between">
                 <div>
                   <div className="text-xs text-slate-500 mb-1.5 font-medium">Başlıca Pazarlar</div>
                   <div className="text-xs text-slate-400">
@@ -228,7 +228,7 @@ export default function SektorlerPage() {
       {/* CTA */}
       <div className="mt-12 card-dark p-8 text-center">
         <div className="text-turkish-red text-sm font-semibold mb-2">DETAYLI ANALİZ</div>
-        <h2 className="text-xl font-bold text-white mb-3">
+        <h2 className="text-xl font-bold text-slate-900 mb-3">
           İhracat Haritasını Keşfet
         </h2>
         <p className="text-slate-400 text-sm max-w-md mx-auto mb-6">
@@ -237,7 +237,7 @@ export default function SektorlerPage() {
         </p>
         <Link
           href="/veriler"
-          className="inline-block bg-turkish-red text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-red-700 transition-colors text-sm"
+          className="inline-block bg-turkish-red text-slate-900 px-6 py-2.5 rounded-xl font-semibold hover:bg-red-700 transition-colors text-sm"
         >
           İl Bazlı Verilere Git →
         </Link>

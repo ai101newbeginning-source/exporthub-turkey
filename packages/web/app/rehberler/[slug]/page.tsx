@@ -38,11 +38,11 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="text-sm text-slate-500 mb-8">
-        <Link href="/" className="hover:text-white transition-colors">Ana Sayfa</Link>
+        <Link href="/" className="hover:text-slate-900 transition-colors">Ana Sayfa</Link>
         <span className="mx-2">/</span>
-        <Link href="/rehberler" className="hover:text-white transition-colors">Rehberler</Link>
+        <Link href="/rehberler" className="hover:text-slate-900 transition-colors">Rehberler</Link>
         <span className="mx-2">/</span>
-        <span className="text-slate-300 line-clamp-1">{rehber.baslik}</span>
+        <span className="text-slate-600 line-clamp-1">{rehber.baslik}</span>
       </nav>
 
       {/* Hero */}
@@ -53,7 +53,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
           </span>
           <span className="text-xs text-slate-500">{rehber.okumaSuresi} dk okuma</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
           {rehber.baslik}
         </h1>
         <p className="text-slate-400 text-lg leading-relaxed mb-4">{rehber.ozet}</p>
@@ -66,7 +66,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
       {/* Adımlar (adimlar varsa) */}
       {rehber.adimlar && rehber.adimlar.length > 0 && (
         <div className="mb-10">
-          <h2 className="text-xl font-bold text-white mb-6">Adım Adım Rehber</h2>
+          <h2 className="text-xl font-bold text-slate-900 mb-6">Adım Adım Rehber</h2>
           <div className="space-y-4">
             {rehber.adimlar.map((adim) => (
               <div key={adim.numara} className="card-dark p-5 flex gap-4">
@@ -74,7 +74,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
                   <span className="text-turkish-red text-sm font-bold">{adim.numara}</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold mb-1.5">{adim.baslik}</h3>
+                  <h3 className="text-slate-900 font-semibold mb-1.5">{adim.baslik}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed">{adim.icerik}</p>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
         <div className="mb-10 space-y-6">
           {rehber.bolumler.map((bolum, i) => (
             <div key={i} className="card-dark p-6">
-              <h2 className="text-lg font-bold text-white mb-3">{bolum.baslik}</h2>
+              <h2 className="text-lg font-bold text-slate-900 mb-3">{bolum.baslik}</h2>
               <p className="text-slate-400 text-sm leading-relaxed">{bolum.icerik}</p>
             </div>
           ))}
@@ -103,7 +103,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
           </div>
           <ul className="space-y-2">
             {rehber.ozHususlar.map((husus, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+              <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
                 <span className="text-amber-400 mt-0.5 flex-shrink-0">•</span>
                 <span>{husus}</span>
               </li>
@@ -113,7 +113,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
       )}
 
       {/* Kaynaklar */}
-      <div className="border-t border-slate-800 pt-6 flex items-center justify-between flex-wrap gap-4">
+      <div className="border-t border-slate-200 pt-6 flex items-center justify-between flex-wrap gap-4">
         <div>
           <span className="text-xs text-slate-500">Kaynaklar: </span>
           <span className="text-xs text-slate-400">{rehber.kaynaklar.join(" · ")}</span>

@@ -122,7 +122,7 @@ export default function RehberlerPage() {
       {/* Başlık */}
       <div className="mb-10 animate-fade-up">
         <div className="text-turkish-red text-sm font-semibold mb-2">UZMAN İÇERİKLER</div>
-        <h1 className="text-4xl font-extrabold text-white mb-3">İhracat Rehberleri</h1>
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">İhracat Rehberleri</h1>
         <p className="text-slate-400 max-w-xl">
           Senior Export Expert onaylı teknik rehberler. Gümrük, Incoterms,
           lojistik, KDV iadesi ve pazar stratejisi hakkında güvenilir bilgi.
@@ -140,12 +140,12 @@ export default function RehberlerPage() {
               className={`card-dark p-6 border-turkish-red/20 hover:border-turkish-red/50 group animate-fade-up delay-${(i + 1) * 100}`}
             >
               <div className="flex items-center gap-2 mb-3">
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${KATEGORI_RENK[guide.kategori] ?? "text-slate-400 bg-slate-800"}`}>
+                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${KATEGORI_RENK[guide.kategori] ?? "text-slate-400 bg-slate-100"}`}>
                   {guide.kategori}
                 </span>
                 <span className="text-xs text-slate-500">{guide.okumaSuresi}</span>
               </div>
-              <h2 className="text-sm font-bold text-white mb-2 leading-snug group-hover:text-turkish-red transition-colors">
+              <h2 className="text-sm font-bold text-slate-900 mb-2 leading-snug group-hover:text-turkish-red transition-colors">
                 {guide.baslik}
               </h2>
               <p className="text-slate-400 text-xs leading-relaxed">{guide.ozet}</p>
@@ -161,15 +161,15 @@ export default function RehberlerPage() {
         {digerler.map((guide, i) => (
           <article
             key={guide.slug}
-            className={`card-dark p-6 hover:border-slate-600 animate-fade-up delay-${(i + 1) * 100}`}
+            className={`card-dark p-6 hover:border-slate-300 animate-fade-up delay-${(i + 1) * 100}`}
           >
             <div className="flex items-center justify-between mb-4">
-              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${KATEGORI_RENK[guide.kategori] ?? "text-slate-400 bg-slate-800"}`}>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${KATEGORI_RENK[guide.kategori] ?? "text-slate-400 bg-slate-100"}`}>
                 {guide.kategori}
               </span>
               <span className="text-xs text-slate-500">{guide.okumaSuresi}</span>
             </div>
-            <h2 className="text-base font-bold text-white mb-2 leading-snug">{guide.baslik}</h2>
+            <h2 className="text-base font-bold text-slate-900 mb-2 leading-snug">{guide.baslik}</h2>
             <p className="text-slate-400 text-sm mb-4">{guide.ozet}</p>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600">✓ {guide.uzman} onaylı</span>

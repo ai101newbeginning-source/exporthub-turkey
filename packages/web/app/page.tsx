@@ -26,35 +26,37 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden py-24 lg:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-turkish-red/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-turkish-navy/20 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white/60 to-slate-50" />
+        {/* Renkli ışıma lekeleri */}
+        <div className="absolute -top-32 left-1/4 w-[700px] h-[700px] bg-turkish-red/12 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-500/8 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-turkish-red/10 border border-turkish-red/20 rounded-full px-4 py-1.5 text-sm text-turkish-red mb-6 animate-fade-in">
+          <div className="inline-flex items-center gap-2 badge-gradient rounded-full px-4 py-1.5 text-sm text-turkish-red mb-6 animate-fade-in">
             <span className="w-2 h-2 bg-turkish-red rounded-full animate-pulse" />
-            2024 verileri güncellendi
+            2025-2026 verileri güncellendi
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fade-up delay-100">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6 animate-fade-up delay-100">
             Türkiye İhracat Verilerini
             <br />
             <span className="text-gradient">Anlayın.</span> Fırsatları{" "}
             <span className="text-gradient">Yakalayın.</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
             TÜİK ve TİM verilerine dayalı, il bazlı ihracat istatistikleri, sektör
             analizleri ve ihracata başlamak için adım adım rehberler.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-300">
             <Link
               href="/veriler"
-              className="bg-turkish-red text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-red-700 transition-all hover:scale-105"
+              className="btn-primary text-white px-8 py-3.5 rounded-xl font-semibold"
             >
               Verileri İncele
             </Link>
             <Link
               href="/rehberler"
-              className="border border-slate-500 text-white px-8 py-3.5 rounded-xl font-semibold hover:border-slate-300 hover:bg-slate-800/50 transition-all hover:scale-105"
+              className="border border-slate-500 text-slate-900 px-8 py-3.5 rounded-xl font-semibold hover:border-purple-400/60 hover:bg-purple-500/5 transition-all hover:scale-105"
             >
               İhracat Rehberi
             </Link>
@@ -63,7 +65,7 @@ export default function HomePage() {
       </section>
 
       {/* Özet İstatistikler */}
-      <section className="py-12 border-y border-slate-800 bg-slate-900/50">
+      <section className="py-12 border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StatsCounter stats={STATS} />
         </div>
@@ -74,7 +76,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-white">Öne Çıkan İller</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Öne Çıkan İller</h2>
               <p className="text-slate-400 mt-1">İhracat hacmine göre Türkiye&apos;nin en güçlü merkezleri</p>
             </div>
             <Link href="/veriler" className="text-turkish-red hover:text-red-400 text-sm font-medium">
@@ -82,26 +84,36 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {FEATURED_PROVINCES.map((p, i) => (
+            {FEATURED_PROVINCES.map((p, i) => {
+              const accentColors: Record<string, string> = {
+                red: "border-l-turkish-red shadow-[0_0_20px_rgba(220,20,60,0.12)]",
+                blue: "border-l-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.1)]",
+                green: "border-l-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.1)]",
+                yellow: "border-l-amber-400 shadow-[0_0_20px_rgba(251,191,36,0.1)]",
+                purple: "border-l-purple-400 shadow-[0_0_20px_rgba(192,132,252,0.1)]",
+              };
+              const accent = accentColors[p.renk] ?? accentColors.red;
+              return (
               <Link
                 key={p.id}
                 href={`/veriler/${p.id}`}
-                className={`card-dark p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all group animate-fade-up delay-${(i + 1) * 100}`}
+                className={`card-dark border-l-2 ${accent} p-5 transition-all group animate-fade-up delay-${(i + 1) * 100}`}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="text-lg font-semibold text-white group-hover:text-turkish-red transition-colors">
+                  <span className="text-lg font-semibold text-slate-900 group-hover:text-turkish-red transition-colors">
                     {p.il}
                   </span>
-                  <span className="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
+                  <span className="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full font-semibold">
                     {p.buyume}
                   </span>
                 </div>
-                <div className="text-2xl font-extrabold text-white">
+                <div className="text-2xl font-extrabold text-slate-900">
                   ${p.ihracat}B
                 </div>
-                <div className="text-xs text-slate-500 mt-1">2024 ihracatı</div>
+                <div className="text-xs text-slate-500 mt-1">2026 ihracatı</div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -111,7 +123,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <div className="text-turkish-red text-sm font-semibold mb-2">SIKÇA SORULAN SORULAR</div>
-            <h2 className="text-2xl font-bold text-white">İhracat Hakkında Merak Edilenler</h2>
+            <h2 className="text-2xl font-bold text-slate-900">İhracat Hakkında Merak Edilenler</h2>
           </div>
           <div className="space-y-3">
             {[
@@ -178,13 +190,13 @@ export default function HomePage() {
             ].map(({ s, c }, i) => (
               <details
                 key={i}
-                className="card-dark group open:border-slate-600"
+                className="card-dark group open:border-slate-300"
               >
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none">
-                  <span className="text-white font-medium text-sm pr-4">{s}</span>
+                  <span className="text-slate-900 font-medium text-sm pr-4">{s}</span>
                   <span className="text-turkish-red flex-shrink-0 text-lg leading-none group-open:rotate-45 transition-transform">+</span>
                 </summary>
-                <div className="px-5 pb-5 text-slate-400 text-sm leading-relaxed border-t border-slate-800 pt-4">
+                <div className="px-5 pb-5 text-slate-400 text-sm leading-relaxed border-t border-slate-200 pt-4">
                   {c}
                 </div>
               </details>
@@ -194,12 +206,12 @@ export default function HomePage() {
       </section>
 
       {/* Son Eklenen Rehberler */}
-      <section className="py-16 border-t border-slate-800">
+      <section className="py-16 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
               <div className="text-turkish-red text-sm font-semibold mb-1">UZMAN İÇERİKLER</div>
-              <h2 className="text-2xl font-bold text-white">Öne Çıkan Rehberler</h2>
+              <h2 className="text-2xl font-bold text-slate-900">Öne Çıkan Rehberler</h2>
               <p className="text-slate-400 text-sm mt-1">İhracat sürecinizde yol gösteren teknik içerikler</p>
             </div>
             <Link href="/rehberler" className="text-turkish-red hover:text-red-400 text-sm font-medium">
@@ -215,7 +227,7 @@ export default function HomePage() {
               <Link
                 key={r.slug}
                 href={`/rehberler/${r.slug}`}
-                className="card-dark p-5 hover:border-slate-600 group transition-all"
+                className="card-dark p-5 hover:border-slate-300 group transition-all"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs text-turkish-red bg-turkish-red/10 px-2 py-0.5 rounded-full font-medium">
@@ -223,7 +235,7 @@ export default function HomePage() {
                   </span>
                   <span className="text-xs text-slate-500">{r.sure}</span>
                 </div>
-                <h3 className="text-sm font-bold text-white leading-snug group-hover:text-turkish-red transition-colors mb-3">
+                <h3 className="text-sm font-bold text-slate-900 leading-snug group-hover:text-turkish-red transition-colors mb-3">
                   {r.baslik}
                 </h3>
                 <div className="text-turkish-red text-xs font-medium">Oku →</div>
@@ -239,7 +251,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card-dark p-8">
               <div className="text-turkish-red text-sm font-semibold mb-2">VERİ ANALİZİ</div>
-              <h3 className="text-xl font-bold text-white mb-3">Sektör Bazlı İhracat</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Sektör Bazlı İhracat</h3>
               <p className="text-slate-400 text-sm mb-6">
                 Otomotiv, tekstil, makine ve gıda sektörlerinde Türkiye&apos;nin
                 ihracat performansını inceleyin.
@@ -253,7 +265,7 @@ export default function HomePage() {
             </div>
             <div className="card-dark p-8">
               <div className="text-turkish-red text-sm font-semibold mb-2">REHBER</div>
-              <h3 className="text-xl font-bold text-white mb-3">İhracata Nasıl Başlanır?</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">İhracata Nasıl Başlanır?</h3>
               <p className="text-slate-400 text-sm mb-6">
                 Gümrük işlemleri, Incoterms, akreditif ve lojistik konularında
                 uzman içerikler.
@@ -269,10 +281,10 @@ export default function HomePage() {
         </div>
       </section>
       {/* Bülten CTA */}
-      <section className="py-16 border-t border-slate-800">
+      <section className="py-16 border-t border-slate-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-turkish-red text-sm font-semibold mb-3">AYLIK BÜLTEN</div>
-          <h2 className="text-3xl font-extrabold text-white mb-4">
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
             İhracat Verilerini Takip Edin
           </h2>
           <p className="text-slate-400 mb-8 max-w-xl mx-auto">
@@ -284,11 +296,11 @@ export default function HomePage() {
             <input
               type="email"
               placeholder="e-posta adresiniz"
-              className="flex-1 bg-slate-800 border border-slate-700 text-white placeholder-slate-500 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-turkish-red transition-colors"
+              className="flex-1 bg-slate-100 border border-slate-300 text-slate-900 placeholder-slate-500 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-turkish-red transition-colors"
             />
             <button
               type="button"
-              className="bg-turkish-red text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-red-700 transition-colors"
+              className="bg-turkish-red text-slate-900 px-6 py-3 rounded-xl font-semibold text-sm hover:bg-red-700 transition-colors"
             >
               Abone Ol
             </button>

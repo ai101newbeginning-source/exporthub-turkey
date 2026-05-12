@@ -118,11 +118,11 @@ export default function IlPage({ params }: { params: { il: string } }) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="text-sm text-slate-500 mb-6 flex items-center gap-2">
-        <a href="/" className="hover:text-white transition-colors">Ana Sayfa</a>
+        <a href="/" className="hover:text-slate-900 transition-colors">Ana Sayfa</a>
         <span>/</span>
-        <a href="/veriler" className="hover:text-white transition-colors">Veriler</a>
+        <a href="/veriler" className="hover:text-slate-900 transition-colors">Veriler</a>
         <span>/</span>
-        <span className="text-slate-300">{province.il}</span>
+        <span className="text-slate-600">{province.il}</span>
       </nav>
 
       {/* Veri Güncelleme Rozeti */}
@@ -139,7 +139,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
         <div className="text-turkish-red text-sm font-semibold mb-2">{province.bolge} Bölgesi</div>
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900">
               {province.il}
             </h1>
             <p className="text-slate-400 mt-2 max-w-xl text-base leading-relaxed">
@@ -147,7 +147,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
             </p>
           </div>
           <div className="text-right">
-            <div className="text-4xl font-extrabold text-white">${latestValue.toFixed(1)}B</div>
+            <div className="text-4xl font-extrabold text-slate-900">${latestValue.toFixed(1)}B</div>
             <div className="text-sm text-slate-400">{latestYear} yıllık ihracat</div>
             <div className="text-emerald-400 font-semibold">
               +{province.buyumeOrani2024}% büyüme
@@ -158,7 +158,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
       {/* Animasyon */}
       <div className="mb-10 animate-fade-up delay-100">
-        <h2 className="text-lg font-semibold text-white mb-4">İhracat Trendi Animasyonu</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">İhracat Trendi Animasyonu</h2>
         <ProvincePlayer province={province.il} data={trendData} colorScheme="red" />
       </div>
 
@@ -167,7 +167,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
         {/* Yıllık Trend */}
         <div className="card-dark p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base font-semibold text-white">Yıllık İhracat (milyar USD)</h2>
+            <h2 className="text-base font-semibold text-slate-900">Yıllık İhracat (milyar USD)</h2>
             <span className="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full">
               +{toplamBuyume}% (2020-{latestYear})
             </span>
@@ -176,13 +176,13 @@ export default function IlPage({ params }: { params: { il: string } }) {
             {trendData.map((d) => (
               <div key={d.year} className="flex items-center gap-3">
                 <span className="text-slate-400 text-sm w-10">{d.year}</span>
-                <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-turkish-red rounded-full transition-all"
                     style={{ width: `${(d.value / latestValue) * 100}%` }}
                   />
                 </div>
-                <span className="text-white text-sm font-semibold w-12 text-right">
+                <span className="text-slate-900 text-sm font-semibold w-12 text-right">
                   ${d.value.toFixed(1)}
                 </span>
               </div>
@@ -192,7 +192,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
         {/* Sektörler — linkli */}
         <div className="card-dark p-6">
-          <h2 className="text-base font-semibold text-white mb-4">Öne Çıkan Sektörler</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-4">Öne Çıkan Sektörler</h2>
           <div className="space-y-3">
             {province.topSektorler.map((s, i) => {
               const slug = SEKTOR_SLUG[s.ad];
@@ -202,14 +202,14 @@ export default function IlPage({ params }: { params: { il: string } }) {
                   {slug ? (
                     <Link
                       href={`/sektorler/${slug}`}
-                      className="text-slate-300 text-sm flex-1 truncate hover:text-turkish-red transition-colors"
+                      className="text-slate-600 text-sm flex-1 truncate hover:text-turkish-red transition-colors"
                     >
                       {s.ad}
                     </Link>
                   ) : (
-                    <span className="text-slate-300 text-sm flex-1 truncate">{s.ad}</span>
+                    <span className="text-slate-600 text-sm flex-1 truncate">{s.ad}</span>
                   )}
-                  <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                  <div className="w-24 h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-turkish-red/80 rounded-full"
                       style={{ width: `${s.pay}%` }}
@@ -230,11 +230,11 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
       {/* Pazarlar */}
       <div className="card-dark p-6 mb-6 animate-fade-up delay-300">
-        <h2 className="text-base font-semibold text-white mb-4">Başlıca İhracat Pazarları</h2>
+        <h2 className="text-base font-semibold text-slate-900 mb-4">Başlıca İhracat Pazarları</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {province.topUlkeler.map((u, i) => (
-            <div key={u.ulke} className="text-center p-4 bg-slate-800/50 rounded-lg">
-              <div className="text-2xl font-bold text-white">%{u.pay}</div>
+            <div key={u.ulke} className="text-center p-4 bg-slate-100/50 rounded-lg">
+              <div className="text-2xl font-bold text-slate-900">%{u.pay}</div>
               <div className="text-sm text-slate-400 mt-1">{u.ulke}</div>
               <div className="text-xs text-slate-600">#{i + 1}</div>
             </div>
@@ -246,7 +246,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
       <div className="card-dark p-6 mb-10 animate-fade-up delay-400">
         <div className="flex items-center gap-4 flex-wrap">
           <div>
-            <div className="text-3xl font-extrabold text-white">
+            <div className="text-3xl font-extrabold text-slate-900">
               {province.ihracatciSayisi.toLocaleString("tr-TR")}
             </div>
             <div className="text-slate-400 text-sm">
@@ -256,7 +256,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
           <div className="ml-auto">
             <Link
               href="/rehberler/ilk-ihracat"
-              className="bg-turkish-red text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
+              className="bg-turkish-red text-slate-900 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
             >
               İhracata Başlamak için Rehber →
             </Link>
@@ -268,7 +268,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
       {bolgedekiIller.length > 0 && (
         <div className="mb-10 animate-fade-up delay-500">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base font-semibold text-white">
+            <h2 className="text-base font-semibold text-slate-900">
               {province.bolge} Bölgesindeki Diğer İller
             </h2>
             <Link href="/veriler" className="text-turkish-red text-xs hover:text-red-400">
@@ -282,12 +282,12 @@ export default function IlPage({ params }: { params: { il: string } }) {
                 <Link
                   key={p.id}
                   href={`/veriler/${p.id}`}
-                  className="card-dark p-4 hover:border-slate-600 hover:bg-slate-800/60 transition-all group"
+                  className="card-dark p-4 hover:border-slate-300 hover:bg-slate-100/70 transition-all group"
                 >
-                  <div className="text-white font-semibold text-sm group-hover:text-turkish-red transition-colors mb-1">
+                  <div className="text-slate-900 font-semibold text-sm group-hover:text-turkish-red transition-colors mb-1">
                     {p.il}
                   </div>
-                  <div className="text-xl font-extrabold text-white">${val.toFixed(1)}B</div>
+                  <div className="text-xl font-extrabold text-slate-900">${val.toFixed(1)}B</div>
                   <div className="text-xs text-emerald-400 mt-0.5">+{p.buyumeOrani2024}%</div>
                 </Link>
               );
@@ -308,7 +308,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
               href={`/rehberler/${r.slug}`}
               className="card-dark p-5 hover:border-turkish-red/40 group transition-all"
             >
-              <div className="text-white font-semibold text-sm group-hover:text-turkish-red transition-colors mb-1">
+              <div className="text-slate-900 font-semibold text-sm group-hover:text-turkish-red transition-colors mb-1">
                 {r.baslik}
               </div>
               <div className="text-turkish-red text-xs font-medium mt-2">Oku →</div>

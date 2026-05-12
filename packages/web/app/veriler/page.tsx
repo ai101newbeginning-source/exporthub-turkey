@@ -45,7 +45,7 @@ export default function VerilerPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-8 animate-fade-up">
         <div className="text-turkish-red text-sm font-semibold mb-2">VERİ PORTALI · MAYIS 2026</div>
-        <h1 className="text-4xl font-extrabold text-white mb-3">
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">
           Türkiye İhracat Verileri
         </h1>
         <p className="text-slate-400 max-w-xl">
@@ -68,10 +68,10 @@ export default function VerilerPage() {
               <Link
                 key={p.id}
                 href={`/veriler/${p.id}`}
-                className="flex items-center gap-2 bg-slate-800/60 hover:bg-slate-700/60 px-3 py-2 rounded-lg transition-all group"
+                className="flex items-center gap-2 bg-slate-100/70 hover:bg-slate-200/60 px-3 py-2 rounded-lg transition-all group"
               >
                 <span className="text-slate-600 text-xs w-4">{i + 1}</span>
-                <span className="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors">
+                <span className="text-slate-900 text-sm font-medium group-hover:text-emerald-400 transition-colors">
                   {p.il}
                 </span>
                 <span className="text-emerald-400 text-xs font-bold">
@@ -91,18 +91,20 @@ export default function VerilerPage() {
               <Link
                 key={p.id}
                 href={`/veriler/${p.id}`}
-                className="card-dark p-6 hover:border-slate-600 hover:bg-slate-800/60 transition-all group"
+                className="card-dark p-6 transition-all group"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h2 className="text-lg font-bold text-white group-hover:text-turkish-red transition-colors">
+                    <h2 className="text-lg font-bold text-slate-900 group-hover:text-turkish-red transition-colors">
                       {p.il}
                     </h2>
                     <span className="text-xs text-slate-500">{p.bolge}</span>
                   </div>
                   <span
-                    className={`text-xs px-2 py-0.5 rounded-full ${
-                      p.buyumeOrani2024 >= 10
+                    className={`text-xs px-2 py-1 rounded-full font-semibold ${
+                      p.buyumeOrani2024 >= 15
+                        ? "text-emerald-300 bg-emerald-400/15 shadow-[0_0_10px_rgba(52,211,153,0.2)]"
+                        : p.buyumeOrani2024 >= 10
                         ? "text-emerald-400 bg-emerald-400/10"
                         : "text-sky-400 bg-sky-400/10"
                     }`}
@@ -112,7 +114,7 @@ export default function VerilerPage() {
                 </div>
 
                 <div className="mb-4">
-                  <div className="text-3xl font-extrabold text-white">
+                  <div className="text-3xl font-extrabold text-slate-900">
                     ${latestValue.toFixed(1)}B
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
@@ -120,19 +122,25 @@ export default function VerilerPage() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  {p.topSektorler.slice(0, 2).map((s) => (
+                <div className="space-y-2">
+                  {p.topSektorler.slice(0, 2).map((s, si) => (
                     <div key={s.ad} className="flex items-center gap-2">
                       <div
-                        className="h-1.5 bg-turkish-red/60 rounded-full"
-                        style={{ width: `${s.pay * 1.5}px`, maxWidth: "120px" }}
+                        className="h-1.5 rounded-full"
+                        style={{
+                          width: `${s.pay * 1.5}px`,
+                          maxWidth: "120px",
+                          background: si === 0
+                            ? "linear-gradient(90deg,#DC143C,#c026d3)"
+                            : "linear-gradient(90deg,#c026d3,#6366f1)",
+                        }}
                       />
                       <span className="text-xs text-slate-400 truncate">{s.ad}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-500">
+                <div className="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500">
                   {p.ihracatciSayisi.toLocaleString("tr-TR")} aktif ihracatçı firma
                 </div>
               </Link>

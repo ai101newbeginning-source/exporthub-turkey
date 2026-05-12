@@ -84,24 +84,24 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="text-sm text-slate-500 mb-8 flex items-center gap-2">
-        <a href="/" className="hover:text-white transition-colors">Ana Sayfa</a>
+        <a href="/" className="hover:text-slate-900 transition-colors">Ana Sayfa</a>
         <span>/</span>
-        <a href="/sektorler" className="hover:text-white transition-colors">Sektörler</a>
+        <a href="/sektorler" className="hover:text-slate-900 transition-colors">Sektörler</a>
         <span>/</span>
-        <span className="text-slate-300">{sector.ad}</span>
+        <span className="text-slate-600">{sector.ad}</span>
       </nav>
 
       {/* Header */}
       <div className="mb-10 animate-fade-up">
         <div className="text-turkish-red text-sm font-semibold mb-2">SEKTÖR ANALİZİ · 2024</div>
-        <h1 className="text-4xl font-extrabold text-white mb-3">{sector.ad}</h1>
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">{sector.ad}</h1>
         <p className="text-slate-400 max-w-2xl leading-relaxed">{sector.aciklama}</p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid sm:grid-cols-3 gap-5 mb-10 animate-fade-up delay-100">
         <div className="card-dark p-6 text-center">
-          <div className="text-3xl font-extrabold text-white mb-1">
+          <div className="text-3xl font-extrabold text-slate-900 mb-1">
             ${sector.toplamIhracat2024}B
           </div>
           <div className="text-slate-400 text-sm">2024 Toplam İhracat</div>
@@ -126,15 +126,15 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
       <div className="grid lg:grid-cols-2 gap-6 mb-6">
         {/* Product Groups with Bar Chart */}
         <div className="card-dark p-6 animate-fade-up delay-200">
-          <h2 className="text-base font-semibold text-white mb-5">Ürün Grubu Dağılımı</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-5">Ürün Grubu Dağılımı</h2>
           <div className="space-y-4">
             {sector.urunGruplari.map((u, i) => (
               <div key={u.ad}>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-slate-300 text-sm">{u.ad}</span>
+                  <span className="text-slate-600 text-sm">{u.ad}</span>
                   <span className="text-turkish-red font-bold text-sm">%{u.pay}</span>
                 </div>
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full"
                     style={{
@@ -154,18 +154,18 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
 
         {/* Top Export Countries */}
         <div className="card-dark p-6 animate-fade-up delay-300">
-          <h2 className="text-base font-semibold text-white mb-5">Başlıca İhracat Pazarları</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-5">Başlıca İhracat Pazarları</h2>
           <div className="space-y-3">
             {sector.topUlkeler.map((ulke, i) => (
               <div key={ulke} className="flex items-start gap-3">
                 <span className="text-slate-600 text-sm w-5 pt-0.5 flex-shrink-0">{i + 1}</span>
                 <div className="flex-1">
-                  <div className="text-slate-200 text-sm font-medium">{ulke}</div>
+                  <div className="text-slate-700 text-sm font-medium">{ulke}</div>
                   {COUNTRY_CONTEXT[ulke] && (
                     <div className="text-slate-500 text-xs mt-0.5">{COUNTRY_CONTEXT[ulke]}</div>
                   )}
                 </div>
-                <div className="w-16 h-2 bg-slate-700 rounded-full overflow-hidden self-center">
+                <div className="w-16 h-2 bg-slate-200 rounded-full overflow-hidden self-center">
                   <div
                     className="h-full bg-turkish-red/60 rounded-full"
                     style={{ width: `${100 - i * 16}%` }}
@@ -180,7 +180,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
       {/* Top Provinces */}
       <div className="card-dark p-6 mb-6 animate-fade-up delay-400">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-base font-semibold text-white">Öne Çıkan İller</h2>
+          <h2 className="text-base font-semibold text-slate-900">Öne Çıkan İller</h2>
           <Link href="/veriler" className="text-turkish-red text-xs hover:text-red-400">
             Tüm veri →
           </Link>
@@ -194,7 +194,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
                   {i + 1}
                 </span>
                 <div>
-                  <div className="text-white text-sm font-semibold">{il}</div>
+                  <div className="text-slate-900 text-sm font-semibold">{il}</div>
                   <div className="text-slate-500 text-xs">{sector.ad} merkezi</div>
                 </div>
               </div>
@@ -203,14 +203,14 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
               <Link
                 key={il}
                 href={`/veriler/${ilId}`}
-                className="bg-slate-800/60 border border-slate-700/50 hover:border-turkish-red/40 rounded-lg p-3 transition-all group"
+                className="bg-slate-100/70 border border-slate-300/50 hover:border-turkish-red/40 rounded-lg p-3 transition-all group"
               >
                 {inner}
               </Link>
             ) : (
               <div
                 key={il}
-                className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-3"
+                className="bg-slate-100/70 border border-slate-300/50 rounded-lg p-3"
               >
                 {inner}
               </div>
@@ -223,7 +223,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
       <div className="grid sm:grid-cols-2 gap-5 animate-fade-up delay-500">
         <div className="card-dark p-6">
           <div className="text-turkish-red text-xs font-semibold mb-2">REHBER</div>
-          <h3 className="text-white font-bold mb-2">
+          <h3 className="text-slate-900 font-bold mb-2">
             {sector.ad} Sektöründe İhracata Nasıl Başlanır?
           </h3>
           <p className="text-slate-400 text-sm mb-4">
@@ -235,7 +235,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
         </div>
         <div className="card-dark p-6">
           <div className="text-turkish-red text-xs font-semibold mb-2">FİNANSMAN</div>
-          <h3 className="text-white font-bold mb-2">Devlet Destekleri ve Teşvikler</h3>
+          <h3 className="text-slate-900 font-bold mb-2">Devlet Destekleri ve Teşvikler</h3>
           <p className="text-slate-400 text-sm mb-4">
             KOSGEB, Eximbank ve Ticaret Bakanlığı destekleriyle ihracat maliyetlerinizi düşürün.
           </p>

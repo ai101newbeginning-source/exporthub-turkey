@@ -30,27 +30,27 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body>
-        <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+        <header className="sticky top-0 z-50 bg-white/96 backdrop-blur border-b border-slate-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <a href="/" className="flex items-center gap-2">
                 <span className="text-turkish-red font-bold text-xl">Export</span>
-                <span className="text-white font-bold text-xl">Hub</span>
+                <span className="text-slate-900 font-bold text-xl">Hub</span>
                 <span className="text-slate-400 text-sm ml-1">Türkiye</span>
               </a>
               <nav className="hidden md:flex items-center gap-6 text-sm">
-                <a href="/veriler" className="text-slate-300 hover:text-white transition-colors">
+                <a href="/veriler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   İhracat Verileri
                 </a>
-                <a href="/sektorler" className="text-slate-300 hover:text-white transition-colors">
+                <a href="/sektorler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   Sektörler
                 </a>
-                <a href="/rehberler" className="text-slate-300 hover:text-white transition-colors">
+                <a href="/rehberler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   Rehberler
                 </a>
                 <a
                   href="/rehberler/ilk-ihracat"
-                  className="bg-turkish-red text-white px-4 py-1.5 rounded-lg text-sm hover:bg-red-700 transition-colors"
+                  className="bg-turkish-red text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors shadow-sm"
                 >
                   Başlangıç Rehberi
                 </a>
@@ -60,13 +60,13 @@ export default function RootLayout({
           </div>
         </header>
         <main className="min-h-screen">{children}</main>
-        <footer className="border-t border-slate-800 py-12 mt-24">
+        <footer className="border-t border-slate-200 py-12 mt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between gap-8">
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-turkish-red font-bold text-lg">Export</span>
-                  <span className="text-white font-bold text-lg">Hub</span>
+                  <span className="text-slate-900 font-bold text-lg">Hub</span>
                 </div>
                 <p className="text-slate-400 text-sm max-w-xs">
                   Türkiye ihracat ekosisteminin veri merkezi. TÜİK ve TİM
@@ -75,19 +75,19 @@ export default function RootLayout({
               </div>
               <div className="grid grid-cols-2 gap-8 text-sm">
                 <div>
-                  <div className="text-white font-semibold mb-3">İller</div>
+                  <div className="text-slate-900 font-semibold mb-3">İller</div>
                   {["İstanbul", "Kocaeli", "Bursa", "Gaziantep", "İzmir"].map((il) => (
                     <a
                       key={il}
                       href={`/veriler/${il.toLowerCase().replace("İ", "i").replace("ş", "s")}`}
-                      className="block text-slate-400 hover:text-white mb-1.5 transition-colors"
+                      className="block text-slate-400 hover:text-slate-900 mb-1.5 transition-colors"
                     >
                       {il}
                     </a>
                   ))}
                 </div>
                 <div>
-                  <div className="text-white font-semibold mb-3">Kaynaklar</div>
+                  <div className="text-slate-900 font-semibold mb-3">Kaynaklar</div>
                   <div className="text-slate-400 text-xs space-y-1">
                     <div>TÜİK — Türkiye İstatistik Kurumu</div>
                     <div>TİM — Türkiye İhracatçılar Meclisi</div>
@@ -96,7 +96,7 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            <div className="border-t border-slate-800 mt-8 pt-6 text-slate-500 text-xs">
+            <div className="border-t border-slate-200 mt-8 pt-6 text-slate-500 text-xs">
               © 2024 ExportHub Türkiye. Veriler TÜİK ve TİM kaynaklıdır.
             </div>
           </div>

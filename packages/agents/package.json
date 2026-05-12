@@ -9,6 +9,8 @@
     "build": "tsc",
     "dev": "tsx watch src/cli.ts",
     "start": "node dist/cli.js",
+    "chat": "tsx src/chat.ts",
+    "dispatch": "tsx src/dispatch.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
