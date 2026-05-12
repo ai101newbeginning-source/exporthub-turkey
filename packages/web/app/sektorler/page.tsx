@@ -175,7 +175,7 @@ export default function SektorlerPage() {
                   {sektor.urunGruplari.slice(0, 3).map((u) => (
                     <div key={u.ad} className="flex items-center gap-2">
                       <span className="text-slate-300 text-xs w-32 truncate">{u.ad}</span>
-                      <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
                         <div
                           className={`h-full ${renkClass.bar} rounded-full`}
                           style={{ width: `${(u.pay / maxPay) * 100}%` }}

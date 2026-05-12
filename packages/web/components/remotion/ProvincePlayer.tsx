@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import type { ProvinceExportChartProps } from "@export-hub/remotion";
 
 function PlayerSkeleton() {
   return (
@@ -14,17 +13,13 @@ function PlayerSkeleton() {
   );
 }
 
-const Player = dynamic(
-  () => import("@remotion/player").then((m) => m.Player),
-  { ssr: false, loading: () => <PlayerSkeleton /> }
-);
+// Start loading the heavy Remotion bundle immediately at module parse time,
+// not when the component first renders — eliminates the render-triggered delay.
+const innerImport = import("./ProvincePlayerInner");
 
-const ProvinceExportChart = dynamic(
-  () =>
-    import("@export-hub/remotion").then((m) => m.ProvinceExportChart) as Promise<
-      React.ComponentType<ProvinceExportChartProps>
-    >,
-  { ssr: false }
+const ProvincePlayerInner = dynamic(
+  () => innerImport.then((m) => m.ProvincePlayerInner),
+  { ssr: false, loading: () => <PlayerSkeleton /> }
 );
 
 interface ProvincePlayerProps {
@@ -39,18 +34,7 @@ export function ProvincePlayer({ province, data, colorScheme = "red" }: Province
       className="w-full rounded-xl overflow-hidden bg-slate-900"
       style={{ aspectRatio: "16/9", minHeight: 200 }}
     >
-      <Player
-        component={ProvinceExportChart as unknown as React.ComponentType<Record<string, unknown>>}
-        inputProps={{ province, data, colorScheme }}
-        durationInFrames={150}
-        fps={30}
-        compositionWidth={1920}
-        compositionHeight={1080}
-        style={{ width: "100%", height: "100%" }}
-        autoPlay
-        clickToPlay={false}
-        loop
-      />
+      <ProvincePlayerInner province={province} data={data} colorScheme={colorScheme} />
     </div>
   );
 }

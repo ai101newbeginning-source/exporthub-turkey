@@ -134,7 +134,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
                   <span className="text-slate-300 text-sm">{u.ad}</span>
                   <span className="text-turkish-red font-bold text-sm">%{u.pay}</span>
                 </div>
-                <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full"
                     style={{
@@ -165,7 +165,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
                     <div className="text-slate-500 text-xs mt-0.5">{COUNTRY_CONTEXT[ulke]}</div>
                   )}
                 </div>
-                <div className="w-16 h-1.5 bg-slate-800 rounded-full overflow-hidden self-center">
+                <div className="w-16 h-2 bg-slate-700 rounded-full overflow-hidden self-center">
                   <div
                     className="h-full bg-turkish-red/60 rounded-full"
                     style={{ width: `${100 - i * 16}%` }}

@@ -176,7 +176,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
             {trendData.map((d) => (
               <div key={d.year} className="flex items-center gap-3">
                 <span className="text-slate-400 text-sm w-10">{d.year}</span>
-                <div className="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-turkish-red rounded-full transition-all"
                     style={{ width: `${(d.value / latestValue) * 100}%` }}
@@ -209,7 +209,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
                   ) : (
                     <span className="text-slate-300 text-sm flex-1 truncate">{s.ad}</span>
                   )}
-                  <div className="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-turkish-red/80 rounded-full"
                       style={{ width: `${s.pay}%` }}

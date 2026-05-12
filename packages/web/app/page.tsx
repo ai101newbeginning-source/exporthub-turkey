@@ -54,7 +54,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/rehberler"
-              className="border border-slate-600 text-slate-200 px-8 py-3.5 rounded-xl font-semibold hover:border-slate-400 transition-all hover:scale-105"
+              className="border border-slate-500 text-white px-8 py-3.5 rounded-xl font-semibold hover:border-slate-300 hover:bg-slate-800/50 transition-all hover:scale-105"
             >
               İhracat Rehberi
             </Link>
@@ -63,7 +63,7 @@ export default function HomePage() {
       </section>
 
       {/* Özet İstatistikler */}
-      <section className="py-12 border-y border-slate-800">
+      <section className="py-12 border-y border-slate-800 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StatsCounter stats={STATS} />
         </div>
