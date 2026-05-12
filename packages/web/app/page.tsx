@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { StatsCounter } from "@/components/ui/StatsCounter";
 
 export const metadata: Metadata = {
   title: "ExportHub Türkiye — İhracat Verileri ve Rehberler",
@@ -14,10 +15,10 @@ const FEATURED_PROVINCES = [
 ];
 
 const STATS = [
-  { label: "Toplam İhracat (2024)", value: "255 Milyar $", kaynak: "TÜİK" },
-  { label: "İhracatçı Firma", value: "82,000+", kaynak: "TİM" },
-  { label: "Hedef Pazar", value: "230+ Ülke", kaynak: "Ticaret Bakanlığı" },
-  { label: "Büyüme Oranı", value: "%7.2", kaynak: "2024 vs 2023" },
+  { label: "Toplam İhracat (2024)", value: "255 Milyar $", kaynak: "TÜİK", numericValue: 255, suffix: " Milyar $" },
+  { label: "İhracatçı Firma", value: "82,000+", kaynak: "TİM", numericValue: 82000, suffix: "+" },
+  { label: "Hedef Pazar", value: "230+ Ülke", kaynak: "Ticaret Bakanlığı", numericValue: 230, suffix: "+ Ülke" },
+  { label: "Büyüme Oranı", value: "%7.2", kaynak: "2024 vs 2023", numericValue: 7, suffix: "%", prefix: "%" },
 ];
 
 export default function HomePage() {
@@ -30,30 +31,30 @@ export default function HomePage() {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-turkish-navy/20 rounded-full blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-turkish-red/10 border border-turkish-red/20 rounded-full px-4 py-1.5 text-sm text-turkish-red mb-6">
+          <div className="inline-flex items-center gap-2 bg-turkish-red/10 border border-turkish-red/20 rounded-full px-4 py-1.5 text-sm text-turkish-red mb-6 animate-fade-in">
             <span className="w-2 h-2 bg-turkish-red rounded-full animate-pulse" />
             2024 verileri güncellendi
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 animate-fade-up delay-100">
             Türkiye İhracat Verilerini
             <br />
-            <span className="text-turkish-red">Anlayın.</span> Fırsatları{" "}
-            <span className="text-turkish-red">Yakalayın.</span>
+            <span className="text-gradient">Anlayın.</span> Fırsatları{" "}
+            <span className="text-gradient">Yakalayın.</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
             TÜİK ve TİM verilerine dayalı, il bazlı ihracat istatistikleri, sektör
             analizleri ve ihracata başlamak için adım adım rehberler.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-300">
             <Link
               href="/veriler"
-              className="bg-turkish-red text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-red-700 transition-colors"
+              className="bg-turkish-red text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-red-700 transition-all hover:scale-105"
             >
               Verileri İncele
             </Link>
             <Link
               href="/rehberler"
-              className="border border-slate-600 text-slate-200 px-8 py-3.5 rounded-xl font-semibold hover:border-slate-400 transition-colors"
+              className="border border-slate-600 text-slate-200 px-8 py-3.5 rounded-xl font-semibold hover:border-slate-400 transition-all hover:scale-105"
             >
               İhracat Rehberi
             </Link>
@@ -64,15 +65,7 @@ export default function HomePage() {
       {/* Özet İstatistikler */}
       <section className="py-12 border-y border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-extrabold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-slate-400">{stat.label}</div>
-                <div className="text-xs text-slate-600 mt-1">Kaynak: {stat.kaynak}</div>
-              </div>
-            ))}
-          </div>
+          <StatsCounter stats={STATS} />
         </div>
       </section>
 
@@ -89,11 +82,11 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {FEATURED_PROVINCES.map((p) => (
+            {FEATURED_PROVINCES.map((p, i) => (
               <Link
                 key={p.id}
                 href={`/veriler/${p.id}`}
-                className="card-dark p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all group"
+                className={`card-dark p-5 hover:border-slate-600 hover:bg-slate-800/60 transition-all group animate-fade-up delay-${(i + 1) * 100}`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <span className="text-lg font-semibold text-white group-hover:text-turkish-red transition-colors">

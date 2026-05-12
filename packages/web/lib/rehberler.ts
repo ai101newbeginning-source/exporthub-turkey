@@ -214,6 +214,176 @@ export const REHBERLER: Record<string, Rehber> = {
     ],
     kaynaklar: ["ICC UCP 600", "Türkiye Bankacılık Kanunu", "Eximbank"],
   },
+  "pazar-arastirmasi": {
+    slug: "pazar-arastirmasi",
+    baslik: "İhracatta Pazar Araştırması ve Alıcı Doğrulama",
+    ozet: "Hedef pazar nasıl seçilir, yabancı alıcı nasıl bulunur ve güvenilirliği nasıl teyit edilir? KOBİ'lerin en çok dolandırıldığı bu aşamada korunma yolları.",
+    kategori: "Strateji",
+    kategoriRenk: "sky",
+    okumaSuresi: 10,
+    onayci: "Market Intelligence",
+    bolumler: [
+      {
+        baslik: "Hedef Pazar Nasıl Seçilir?",
+        icerik: "ITC Trade Map (trademap.org) ve TİM'in pazar araştırma raporları ücretsiz başlangıç noktasıdır. Türkiye'nin STA imzaladığı ülkelerde gümrük avantajı değerlendirilmeli. Önce coğrafi yakınlık (Orta Doğu, Balkanlar, BDT), dil kolaylığı ve ödeme güvenliği açısından filtreleyin.",
+      },
+      {
+        baslik: "Yabancı Alıcı Bulma Kanalları",
+        icerik: "TİM Ticaret Heyetleri ve Sektörel Ticaret Heyetleri: Bakanlık destekli, alıcıyla yüz yüze bağlantı. Ticaret Müşavirlikleri: 150+ ülkede Türk ticaret ataşeleri ücretsiz alıcı araştırması yapıyor. B2B platformları: Alibaba, GlobalSources, Europages, Kompass. Fuarlar: Hannover Messe (makine), Texworld (tekstil), SIAL (gıda) sektöre göre en verimli kanal.",
+      },
+      {
+        baslik: "Alıcı Güvenilirliğini Nasıl Teyit Edersiniz?",
+        icerik: "Coface, Euler Hermes veya D&B'den ticari kredi raporu alın (ortalama 150-300 €). Türk Ticaret Müşavirliği'nden alıcı hakkında ön bilgi isteyin (ücretsiz). LinkedIn'den şirketin varlığını, çalışan sayısını ve geçmişini doğrulayın. Referans isteyin: gerçek alıcılar mevcut tedarikçi referansı vermekten çekinmez.",
+      },
+      {
+        baslik: "Dolandırıcılık Uyarıları",
+        icerik: "Peşin ödeme yerine akreditif veya vesaik mukabili isteyen alıcıdan şüphelenin — tersi doğru, güvenilir alıcı nakit akışı için genellikle ertelenmiş ödeme ister. Fatura adresindeki şirket adı ile L/C'deki alıcı adının eşleşmesi zorunlu. 'Örnek sipariş' ile büyük hacim talep eden, iletişimi sadece WhatsApp üzerinden yürüten alıcılarda dikkatli olun.",
+      },
+    ],
+    ozHususlar: [
+      "Yeni bir pazara girerken ilk siparişi küçük tutun, alıcının ödeme davranışını test edin.",
+      "Eximbank'ın ihracat kredi sigortası, alıcı temerrüdüne karşı %85'e kadar teminat sağlar.",
+      "KOSGEB'in 'Pazar Araştırması ve Pazarlama Desteği' ile harcamalarınızın %60'ını geri alabilirsiniz.",
+    ],
+    kaynaklar: ["ITC Trade Map", "TİM", "Ticaret Müşavirlikleri", "Eximbank"],
+  },
+
+  "kdv-istisnasi": {
+    slug: "kdv-istisnasi",
+    baslik: "İhracatta KDV İstisnası ve KDV İadesi Nasıl Alınır?",
+    ozet: "İhracat teslimleri KDV'den istisnadır ve yüklenilen KDV iade alınabilir. Bu nakit akışı avantajını kullanmak için gereken belgeler ve süreç.",
+    kategori: "Vergi",
+    kategoriRenk: "emerald",
+    okumaSuresi: 9,
+    onayci: "Senior Export Expert",
+    bolumler: [
+      {
+        baslik: "İhracat KDV İstisnası Nedir?",
+        icerik: "3065 sayılı KDV Kanunu'nun 11. maddesi gereği ihracat teslimleri KDV'den istisnadır. Yani malı yurt dışına sattığınızda faturanıza KDV eklemezsiniz. Ancak o malı üretirken ödediğiniz KDV'yi (hammadde, enerji, hizmet) Madde 32 kapsamında Hazine'den geri alabilirsiniz.",
+      },
+      {
+        baslik: "İade Nasıl Talep Edilir?",
+        icerik: "Mahsuben iade: Ödenecek KDV'den düşülür, en hızlı yol. Nakden iade: 10.000 TL'nin altında vergi inceleme raporu olmadan, üzerinde YMM tasdik raporu veya vergi inceleme raporu gerekir. Elektronik ortamda KDV İadesi Kontrol Raporu (KDVİRA) sistemi üzerinden başvuru yapılır. Süre: Mahsuben 1-2 ay, nakden 3-6 ay olabilir.",
+      },
+      {
+        baslik: "Gerekli Belgeler",
+        icerik: "İhracat beyannamesi (gümrükçe onaylı kapanmış), ticari fatura, yüklenilen KDV listesi, ihracata ait taşıma belgeleri. İmalatçı-ihracatçılarda ayrıca satın alma faturaları ve stok takip belgesi istenebilir.",
+      },
+      {
+        baslik: "Dikkat Edilmesi Gereken Noktalar",
+        icerik: "İhracat beyannamesinin kapanması iadein ön koşuludur; gümrük kapanışı gecikmesi iade sürecini doğrudan etkiler. Bedelsiz ihracat, örnekler ve numuneler için özel hükümler geçerlidir. İhracatla ilgisiz KDV (yurt içi satış, personel giderleri) yüklenilen KDV listesine dahil edilmemelidir.",
+      },
+    ],
+    ozHususlar: [
+      "YMM ile sürekli hizmet sözleşmesi yaparsanız iade süreci önemli ölçüde hızlanır.",
+      "KDV iadesi nakit akışı üzerindeki etkisi büyük — aylık takip edin, gecikmelerinizi GİB'e bildirin.",
+      "e-Fatura/e-Arşiv zorunluluğu kapsamındaysanız iade başvurularında elektronik belgeler öncelikli kabul görmektedir.",
+    ],
+    kaynaklar: ["3065 Sayılı KDV Kanunu", "GİB", "KDVİRA Sistemi"],
+  },
+
+  "devlet-destekleri": {
+    slug: "devlet-destekleri",
+    baslik: "İhracatçılar İçin Devlet Destekleri: KOSGEB, Eximbank ve Ticaret Bakanlığı",
+    ozet: "Hibe ve düşük faizli krediden fuar desteklerine kadar ihracatçıların yararlanabileceği tüm destekler, başvuru koşulları ve pratik tüyolar.",
+    kategori: "Finansman",
+    kategoriRenk: "purple",
+    okumaSuresi: 11,
+    onayci: "Senior Export Expert",
+    bolumler: [
+      {
+        baslik: "KOSGEB Uluslararasılaşma Desteği",
+        icerik: "Yurt dışı pazar araştırması, reklam-tanıtım, yabancı dil sertifikası ve web sitesi giderleri için %60'a kadar hibe. Üst limit: 300.000 TL/yıl. Başvuru: KOSGEB portalı üzerinden, KOBİ koşulunu sağlayan tüm işletmeler yararlanabilir. Dikkat: gider yapılmadan önce onay alınması gerekir.",
+      },
+      {
+        baslik: "Ticaret Bakanlığı Destekleri (2010/8 Sayılı Karar)",
+        icerik: "Yurt dışı fuar katılımı: stand kirası ve nakliye giderlerinin %50-75'i hibe. Pazar araştırması: rapor başına 1.500 $'a kadar destek. E-ticaret platformu üyeliği: Amazon, Alibaba, Etsy üyelik ücretlerinin %75'i desteklenir. Reklam giderleri: Google, Meta, LinkedIn reklamları dahil, $400.000'a kadar. Başvuru: İhracatçı Birlikleri üzerinden yapılır.",
+      },
+      {
+        baslik: "Eximbank Kredileri ve Sigorta",
+        icerik: "Kısa vadeli ihracat kredisi: TCMB politika faizinin altında, 360 güne kadar. Sevk öncesi ihracat kredisi: sipariş aşamasında üretim finansmanı. İhracat kredi sigortası: alıcı temerrüdü ve politik risk karşı %85'e kadar teminat. İhracat alacak sigortası: senedin vadesinde ödenmemesi durumunda koruma. Özellikle Afrika, Orta Asya ve MENA gibi riskli pazarlara açılanlara kritik.",
+      },
+      {
+        baslik: "TİM ve Birlik Destekleri",
+        icerik: "Sektörel Ticaret Heyeti: Bakanlık-TİM ortaklığıyla düzenlenen, belirli ülkelere yönelik alıcı buluşmaları. Yurt İçi ve Yurt Dışı Fuarlar: İhracatçı Birlikleri toplu katılım organizasyonu. Ar-Ge ve Yenilik: TÜBİTAK 1501, TEYDEB programlarıyla ihracata yönelik ürün geliştirme destekleri.",
+      },
+    ],
+    ozHususlar: [
+      "Desteklerin çoğunda 'geriye dönük' harcama kabul edilmez — önce onay alın, sonra harcayın.",
+      "Birden fazla desteği eş zamanlı kullanmak mümkün, ancak aynı gider kalemini iki farklı destekten talep edemezsiniz.",
+      "KOSGEB ve Bakanlık desteklerinde KOBİ şartı (250 kişi altı, 500 milyon TL altı ciro) 2024 itibarıyla güncellenmiştir — kontrol edin.",
+    ],
+    kaynaklar: ["KOSGEB", "Ticaret Bakanlığı", "Eximbank", "TİM"],
+  },
+
+  "lojistik-secimi": {
+    slug: "lojistik-secimi",
+    baslik: "İhracatta Lojistik ve Nakliye Modu Seçimi",
+    ozet: "Denizyolu, havayolu, karayolu ve demiryolu arasında doğru tercihi nasıl yaparsınız? Maliyet, hız ve ürüne göre karar rehberi.",
+    kategori: "Lojistik",
+    kategoriRenk: "amber",
+    okumaSuresi: 8,
+    onayci: "Senior Export Expert",
+    bolumler: [
+      {
+        baslik: "Denizyolu (FCL / LCL)",
+        icerik: "FCL (Full Container Load): Tam konteyner, 20' veya 40'. Büyük hacim için en ekonomik seçenek. LCL (Less than Container Load): Farklı gönderenlerle konteyner paylaşımı, küçük hacimler için. Transit süre: Avrupa 10-15 gün, Uzak Doğu 25-35 gün. Uygun ürünler: ağır ve hacimli sanayi malları, tekstil, gıda. Belge: Bill of Lading (B/L).",
+      },
+      {
+        baslik: "Havayolu",
+        icerik: "En hızlı, en pahalı mod. Kilo başına maliyet denizyolunun 4-6 katı. Uygun ürünler: elektronik, ilaç, mücevher, moda ürünleri, acil parça. İstanbul Havalimanı Avrupa'nın en büyük kargo terminaline sahip. Transit süre: Avrupa 1-2 gün, ABD 2-3 gün. Belge: Air Waybill (AWB). DHL, FedEx, UPS ekspres çözümleri küçük hacimler için alternatif.",
+      },
+      {
+        baslik: "Karayolu",
+        icerik: "Avrupa, Orta Doğu ve BDT için esneklik ve kapıdan kapıya teslimat avantajı. Transit süre: Almanya 4-5 gün, Irak 2-3 gün. TIR karnesi ile 58 ülkede kolaylaştırılmış gümrük. CMR konşimentosu uluslararası kara taşımasının temel belgesi. Türkiye kara taşımacılığında Avrupa'da 1. sıradadır.",
+      },
+      {
+        baslik: "Demiryolu ve Çok Modlu Taşımacılık",
+        icerik: "Bakü-Tiflis-Kars (BTK) hattıyla Orta Asya'ya demiryolu bağlantısı güçlendi. Çin'e denizyolundan %30 ucuz, havayolundan %70 ucuz. Transit süre: Çin 12-18 gün. Çok modlu (multimodal): farklı modları birleştirerek maliyet-hız dengesi. Örn. karayolu + denizyolu kombinasyonu (ro-ro).",
+      },
+    ],
+    ozHususlar: [
+      "Freight forwarder seçiminde en az 3 teklif alın ve referans kontrol edin — fiyat farkı %20-40 olabilir.",
+      "Incoterms ile nakliye modu doğrudan bağlantılı: FOB/CFR/CIF yalnızca denizyolu için, FCA/CPT/CIP tüm modlar için geçerli.",
+      "Ürününüzün ADR (tehlikeli madde), soğuk zincir veya özel ambalaj gerektirip gerektirmediğini önceden belirleyin.",
+    ],
+    kaynaklar: ["UND (Uluslararası Nakliyeciler Derneği)", "DTD", "Ticaret Bakanlığı"],
+  },
+
+  "uluslararasi-sozlesme": {
+    slug: "uluslararasi-sozlesme",
+    baslik: "Uluslararası Satış Sözleşmeleri: CISG ve ICC Model Sözleşme",
+    ozet: "İhracat sözleşmesi nasıl hazırlanır? Hangi hukuk geçerli olur? Uyuşmazlık durumunda ne yapılır? CISG ve ICC model sözleşme rehberi.",
+    kategori: "Hukuk",
+    kategoriRenk: "sky",
+    okumaSuresi: 10,
+    onayci: "Senior Export Expert",
+    bolumler: [
+      {
+        baslik: "CISG Nedir ve Neden Önemlidir?",
+        icerik: "CISG (Milletlerarası Mal Satımı Sözleşmeleri Hakkında BM Antlaşması), Türkiye'nin 2011'de taraf olduğu ve 97 ülkede geçerli uluslararası satım hukukudur. Taraflar aksini kararlaştırmadıkça iki CISG ülkesi arasındaki mal satımlarına otomatik uygulanır. Türk BK veya alıcının ulusal hukukundan farklı hükümler içerebileceğinden bilinmesi kritiktir.",
+      },
+      {
+        baslik: "Sözleşmede Olmazsa Olmaz Maddeler",
+        icerik: "Tarafların tanımı ve adresleri. Malın tanımı, miktarı ve kalite kriterleri (ISO, CE sertifikaları dahil). Fiyat ve para birimi. Teslim koşulu (Incoterms kuralı). Ödeme yöntemi ve vadesi. Mülkiyetin geçişi. Garanti ve ayıp ihbarı süresi. Yetkili hukuk ve uyuşmazlık çözüm yeri.",
+      },
+      {
+        baslik: "Uyuşmazlık Çözümü",
+        icerik: "Mahkeme yerine tahkim tercih edin: ICC, LCIA veya İstanbul Tahkim Merkezi (ISTAC) kararları 170+ ülkede icra edilebilir. New York Sözleşmesi kapsamındaki tahkim kararları mahkeme kararlarından çok daha kolay tanınır. Mücbir sebep maddesi (force majeure): pandemi, savaş, doğal afet durumlarını açıkça tanımlayın.",
+      },
+      {
+        baslik: "ICC Model Sözleşmeler",
+        icerik: "ICC (Uluslararası Ticaret Odası) distribütörlük, acente ve tek seferlik satım için hazır model sözleşmeler sunar. Bu belgeler 150+ ülkede mahkemelerce tanınan standartlardır. Türkçe çevirileri ICC Türkiye üzerinden temin edilebilir. Kendi sözleşmenizi bu modeller üzerine inşa etmek, sıfırdan hazırlamaktan çok daha güvenlidir.",
+      },
+    ],
+    ozHususlar: [
+      "Sözleşmeyi her iki dilde (Türkçe + alıcının dili) hazırlayın; çelişki halinde hangi dilin esas alınacağını belirtin.",
+      "CISG'i dışlamak istiyorsanız sözleşmede açıkça 'CISG'in uygulanması hariç tutulmuştur' yazın.",
+      "Avukat ücreti ödememek için şimdi sözleşmeyi basit tutmak, ileride dava maliyetini katlayabilir — en azından ICC model sözleşmesini kullanın.",
+    ],
+    kaynaklar: ["CISG (BM)", "ICC Model Contracts", "ISTAC", "ICC Türkiye"],
+  },
+
   "gaziantep-ihracat": {
     slug: "gaziantep-ihracat",
     baslik: "Gaziantep'ten İhracat: Sektörler ve Pazarlar",

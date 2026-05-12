@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MobileMenu } from "@/components/ui/MobileMenu";
 
 export const metadata: Metadata = {
   title: {
@@ -48,12 +49,13 @@ export default function RootLayout({
                   Rehberler
                 </a>
                 <a
-                  href="/rehberler"
+                  href="/rehberler/ilk-ihracat"
                   className="bg-turkish-red text-white px-4 py-1.5 rounded-lg text-sm hover:bg-red-700 transition-colors"
                 >
                   Başlangıç Rehberi
                 </a>
               </nav>
+              <MobileMenu />
             </div>
           </div>
         </header>
