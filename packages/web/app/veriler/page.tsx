@@ -10,9 +10,9 @@ const TurkeyMap = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "Türkiye İhracat Verileri — İl Bazlı İstatistikler",
+  title: "Türkiye İl Bazlı İhracat Verileri — 11 İl Analizi | ExportHub",
   description:
-    "Türkiye'nin tüm illerinin ihracat verileri. TÜİK ve TİM kaynaklı güncel istatistikler.",
+    "İstanbul'dan Gaziantep'e Türkiye'nin illerinin ihracat verilerini inceleyin. Sektör dağılımı, hedef ülkeler ve yıllık büyüme verileri. TÜİK/TİM kaynaklı.",
 };
 
 interface ProvinceData {
@@ -43,19 +43,51 @@ function getProvinces(): ProvinceData[] {
 
 export default function VerilerPage() {
   const provinces = getProvinces();
+  const topBuyuyen = [...provinces]
+    .sort((a, b) => b.buyumeOrani2024 - a.buyumeOrani2024)
+    .slice(0, 5);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-10">
-        <div className="text-turkish-red text-sm font-semibold mb-2">VERİ PORTALI</div>
+      <div className="mb-8 animate-fade-up">
+        <div className="text-turkish-red text-sm font-semibold mb-2">VERİ PORTALI · MART 2025</div>
         <h1 className="text-4xl font-extrabold text-white mb-3">
           Türkiye İhracat Verileri
         </h1>
         <p className="text-slate-400 max-w-xl">
-          İl bazlı ihracat istatistikleri, sektör dağılımları ve büyüme trendleri.
-          Kaynak: TÜİK · TİM · Ticaret Bakanlığı
+          İlginizi çeken ile tıklayın — sektör dağılımını, hedef ülkeleri ve büyüme
+          trendini inceleyin. Kaynak: TÜİK · TİM · Ticaret Bakanlığı
         </p>
       </div>
+
+      {/* En Hızlı Büyüyen Banner */}
+      {topBuyuyen.length > 0 && (
+        <div className="mb-8 card-dark p-5 border-emerald-400/20 animate-fade-up delay-100">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+              En Hızlı Büyüyen İller — 2024
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {topBuyuyen.map((p, i) => (
+              <Link
+                key={p.id}
+                href={`/veriler/${p.id}`}
+                className="flex items-center gap-2 bg-slate-800/60 hover:bg-slate-700/60 px-3 py-2 rounded-lg transition-all group"
+              >
+                <span className="text-slate-600 text-xs w-4">{i + 1}</span>
+                <span className="text-white text-sm font-medium group-hover:text-emerald-400 transition-colors">
+                  {p.il}
+                </span>
+                <span className="text-emerald-400 text-xs font-bold">
+                  +{p.buyumeOrani2024}%
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Turkey Map */}
       {provinces.length > 0 && (

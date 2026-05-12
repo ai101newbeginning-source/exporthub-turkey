@@ -193,6 +193,46 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Son Eklenen Rehberler */}
+      <section className="py-16 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <div className="text-turkish-red text-sm font-semibold mb-1">UZMAN İÇERİKLER</div>
+              <h2 className="text-2xl font-bold text-white">Öne Çıkan Rehberler</h2>
+              <p className="text-slate-400 text-sm mt-1">İhracat sürecinizde yol gösteren teknik içerikler</p>
+            </div>
+            <Link href="/rehberler" className="text-turkish-red hover:text-red-400 text-sm font-medium">
+              Tüm Rehberler →
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              { slug: "ilk-ihracat", baslik: "İlk İhracat Nasıl Yapılır? 10 Adımda Başlangıç", kategori: "Başlangıç", sure: "12 dk" },
+              { slug: "incoterms-rehberi", baslik: "Incoterms 2020: EXW'dan DDP'ye Tam Rehber", kategori: "Teknik", sure: "15 dk" },
+              { slug: "devlet-destekleri", baslik: "İhracatçılar İçin Devlet Destekleri", kategori: "Finansman", sure: "11 dk" },
+            ].map((r) => (
+              <Link
+                key={r.slug}
+                href={`/rehberler/${r.slug}`}
+                className="card-dark p-5 hover:border-slate-600 group transition-all"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs text-turkish-red bg-turkish-red/10 px-2 py-0.5 rounded-full font-medium">
+                    {r.kategori}
+                  </span>
+                  <span className="text-xs text-slate-500">{r.sure}</span>
+                </div>
+                <h3 className="text-sm font-bold text-white leading-snug group-hover:text-turkish-red transition-colors mb-3">
+                  {r.baslik}
+                </h3>
+                <div className="text-turkish-red text-xs font-medium">Oku →</div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Sektörler CTA */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,6 +266,36 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+      {/* Bülten CTA */}
+      <section className="py-16 border-t border-slate-800">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="text-turkish-red text-sm font-semibold mb-3">AYLIK BÜLTEN</div>
+          <h2 className="text-3xl font-extrabold text-white mb-4">
+            İhracat Verilerini Takip Edin
+          </h2>
+          <p className="text-slate-400 mb-8 max-w-xl mx-auto">
+            Türkiye ihracat istatistikleri, yeni sektör analizleri ve pratik ihracat
+            ipuçları her ay doğrudan e-postanıza gelsin. Binlerce ihracatçı ile aynı
+            bilgiye sahip olun.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="e-posta adresiniz"
+              className="flex-1 bg-slate-800 border border-slate-700 text-white placeholder-slate-500 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-turkish-red transition-colors"
+            />
+            <button
+              type="button"
+              className="bg-turkish-red text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-red-700 transition-colors"
+            >
+              Abone Ol
+            </button>
+          </div>
+          <p className="text-xs text-slate-600 mt-3">
+            Spam yok. İstediğiniz zaman abonelikten çıkabilirsiniz.
+          </p>
         </div>
       </section>
     </>
