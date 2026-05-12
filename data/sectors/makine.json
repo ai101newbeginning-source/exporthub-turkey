@@ -1,0 +1,15 @@
+{
+  "id": "makine",
+  "ad": "Makine ve Teçhizat",
+  "toplamIhracat2024": 14.8,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 8.7,
+  "topIller": ["İstanbul", "Kocaeli", "Ankara", "Gaziantep", "İzmir"],
+  "topUlkeler": ["Almanya", "ABD", "İngiltere", "İtalya", "Rusya"],
+  "urunGruplari": [
+    { "ad": "Endüstriyel Makineler", "pay": 52 },
+    { "ad": "Tarım Makineleri", "pay": 24 },
+    { "ad": "İnşaat Makineleri", "pay": 24 }
+  ],
+  "aciklama": "Yüksek katma değerli ihracat segmenti. Orta Doğu altyapı projelerine makine ihracatında lider."
+}

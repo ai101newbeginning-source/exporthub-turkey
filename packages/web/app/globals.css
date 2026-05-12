@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --turkish-red: #DC143C;
+  --turkish-navy: #1B3A6B;
+  --dark-bg: #0F172A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.gradient-turkish {
+  background: linear-gradient(135deg, #DC143C 0%, #1B3A6B 100%);
+}
+
+.card-dark {
+  @apply bg-slate-900 border border-slate-800 rounded-xl;
+}

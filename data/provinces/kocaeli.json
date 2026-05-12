@@ -1,0 +1,30 @@
+{
+  "id": "kocaeli",
+  "il": "Kocaeli",
+  "bolge": "Marmara",
+  "yillikIhracat": {
+    "2020": 8.6,
+    "2021": 11.2,
+    "2022": 13.4,
+    "2023": 14.9,
+    "2024": 16.2
+  },
+  "birim": "milyar USD",
+  "topSektorler": [
+    { "ad": "Otomotiv ve Yan Sanayi", "pay": 42.1, "birim": "%" },
+    { "ad": "Kimyasal Maddeler", "pay": 22.3, "birim": "%" },
+    { "ad": "Plastik ve Kauçuk", "pay": 14.7, "birim": "%" },
+    { "ad": "Makine ve Teçhizat", "pay": 11.2, "birim": "%" },
+    { "ad": "Petrol Ürünleri", "pay": 9.7, "birim": "%" }
+  ],
+  "topUlkeler": [
+    { "ulke": "Almanya", "pay": 18.4, "birim": "%" },
+    { "ulke": "Fransa", "pay": 12.1, "birim": "%" },
+    { "ulke": "İspanya", "pay": 9.8, "birim": "%" },
+    { "ulke": "İtalya", "pay": 8.3, "birim": "%" },
+    { "ulke": "Romanya", "pay": 6.2, "birim": "%" }
+  ],
+  "buyumeOrani2024": 8.7,
+  "ihracatciSayisi": 3200,
+  "aciklama": "Türkiye'nin otomotiv ve kimya sanayisinin kalbi. Ford, Hyundai ve İzmit Rafinerisi'ne ev sahipliği yapar."
+}

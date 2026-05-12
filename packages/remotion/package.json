@@ -1,0 +1,23 @@
+{
+  "name": "@export-hub/remotion",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "preview": "npx remotion studio src/index.ts",
+    "build": "npx remotion bundle src/index.ts",
+    "render": "npx remotion render src/index.ts ProvinceExportChart"
+  },
+  "dependencies": {
+    "remotion": "^4.0.0",
+    "@remotion/player": "^4.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "istanbul",
+  "il": "İstanbul",
+  "bolge": "Marmara",
+  "yillikIhracat": {
+    "2020": 52.1,
+    "2021": 63.8,
+    "2022": 68.4,
+    "2023": 72.1,
+    "2024": 75.3
+  },
+  "birim": "milyar USD",
+  "topSektorler": [
+    { "ad": "Tekstil ve Konfeksiyon", "pay": 28.4, "birim": "%" },
+    { "ad": "Makine ve Teçhizat", "pay": 18.2, "birim": "%" },
+    { "ad": "Kimyasal Maddeler", "pay": 12.7, "birim": "%" },
+    { "ad": "Mücevherat", "pay": 9.3, "birim": "%" },
+    { "ad": "Gıda ve Tarım", "pay": 8.1, "birim": "%" }
+  ],
+  "topUlkeler": [
+    { "ulke": "Almanya", "pay": 11.2, "birim": "%" },
+    { "ulke": "ABD", "pay": 8.7, "birim": "%" },
+    { "ulke": "İngiltere", "pay": 7.4, "birim": "%" },
+    { "ulke": "İtalya", "pay": 6.2, "birim": "%" },
+    { "ulke": "Fransa", "pay": 5.8, "birim": "%" }
+  ],
+  "buyumeOrani2024": 4.4,
+  "ihracatciSayisi": 42800,
+  "aciklama": "Türkiye'nin en büyük ihracat merkezi, toplam ihracatın yaklaşık %40'ını gerçekleştirir."
+}

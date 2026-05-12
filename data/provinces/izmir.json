@@ -1,0 +1,30 @@
+{
+  "id": "izmir",
+  "il": "İzmir",
+  "bolge": "Ege",
+  "yillikIhracat": {
+    "2020": 8.1,
+    "2021": 10.3,
+    "2022": 12.4,
+    "2023": 13.8,
+    "2024": 15.1
+  },
+  "birim": "milyar USD",
+  "topSektorler": [
+    { "ad": "Tarım ve Gıda", "pay": 26.4, "birim": "%" },
+    { "ad": "Kimyasal Maddeler", "pay": 19.7, "birim": "%" },
+    { "ad": "Tekstil", "pay": 16.3, "birim": "%" },
+    { "ad": "Makine ve Teçhizat", "pay": 14.8, "birim": "%" },
+    { "ad": "Elektronik", "pay": 22.8, "birim": "%" }
+  ],
+  "topUlkeler": [
+    { "ulke": "ABD", "pay": 14.2, "birim": "%" },
+    { "ulke": "Almanya", "pay": 12.6, "birim": "%" },
+    { "ulke": "İtalya", "pay": 9.3, "birim": "%" },
+    { "ulke": "İngiltere", "pay": 8.7, "birim": "%" },
+    { "ulke": "Fransa", "pay": 7.1, "birim": "%" }
+  ],
+  "buyumeOrani2024": 9.4,
+  "ihracatciSayisi": 7300,
+  "aciklama": "Ege'nin incisi. Zeytin, üzüm ve incir gibi tarım ürünlerinden kimya ve tekstile, güçlü ve çeşitlendirilmiş bir ihracat profili. Alsancak Limanı stratejik konumu ile öne çıkar."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "gaziantep",
+  "il": "Gaziantep",
+  "bolge": "Güneydoğu Anadolu",
+  "yillikIhracat": {
+    "2020": 5.2,
+    "2021": 7.1,
+    "2022": 8.9,
+    "2023": 10.4,
+    "2024": 12.1
+  },
+  "birim": "milyar USD",
+  "topSektorler": [
+    { "ad": "Tekstil ve Halı", "pay": 34.8, "birim": "%" },
+    { "ad": "Makine ve Teçhizat", "pay": 21.3, "birim": "%" },
+    { "ad": "Gıda ve Fıstık Ürünleri", "pay": 18.6, "birim": "%" },
+    { "ad": "Plastik ve Ambalaj", "pay": 14.2, "birim": "%" },
+    { "ad": "Metal Ürünler", "pay": 11.1, "birim": "%" }
+  ],
+  "topUlkeler": [
+    { "ulke": "Irak", "pay": 24.7, "birim": "%" },
+    { "ulke": "Suriye", "pay": 12.3, "birim": "%" },
+    { "ulke": "ABD", "pay": 9.1, "birim": "%" },
+    { "ulke": "Almanya", "pay": 8.4, "birim": "%" },
+    { "ulke": "Suudi Arabistan", "pay": 7.8, "birim": "%" }
+  ],
+  "buyumeOrani2024": 16.3,
+  "ihracatciSayisi": 4100,
+  "aciklama": "Türkiye'nin en hızlı büyüyen ihracat merkezi. Gaziantep fıstığından tekstile, makineden gıda işlemeye kadar çeşitli sektörlerde güçlü. Orta Doğu ve Afrika pazarlarına kapı."
+}

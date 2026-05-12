@@ -1,0 +1,16 @@
+{
+  "id": "tekstil",
+  "ad": "Tekstil ve Konfeksiyon",
+  "toplamIhracat2024": 18.7,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 6.2,
+  "topIller": ["İstanbul", "Bursa", "Gaziantep", "Denizli", "Kahramanmaraş"],
+  "topUlkeler": ["Almanya", "İspanya", "İngiltere", "ABD", "Fransa"],
+  "urunGruplari": [
+    { "ad": "Örme Giyim", "pay": 38 },
+    { "ad": "Dokuma Giyim", "pay": 29 },
+    { "ad": "Halı ve Yer Kaplamaları", "pay": 18 },
+    { "ad": "Ev Tekstili", "pay": 15 }
+  ],
+  "aciklama": "Türkiye'nin en köklü ihracat sektörü. Dünya halı ihracatında 2. sırada yer alır."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "otomotiv",
+  "ad": "Otomotiv ve Yan Sanayi",
+  "toplamIhracat2024": 32.4,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 11.3,
+  "topIller": ["Kocaeli", "Bursa", "Sakarya", "İstanbul", "Ankara"],
+  "topUlkeler": ["Almanya", "Fransa", "İtalya", "İspanya", "Romanya"],
+  "urunGruplari": [
+    { "ad": "Binek Araçlar", "pay": 44 },
+    { "ad": "Otomotiv Parçaları", "pay": 31 },
+    { "ad": "Ticari Araçlar", "pay": 25 }
+  ],
+  "aciklama": "Türkiye'nin en büyük ihracat sektörü. Ford, Renault, Tofaş, Toyota ve Hyundai üretimleri ile AB pazarının önemli tedarikçisi."
+}
