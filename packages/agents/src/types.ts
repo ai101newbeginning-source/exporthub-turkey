@@ -11,7 +11,8 @@ export type AgentId =
   | "backend-dev"
   | "qa-tester"
   | "remotion-specialist"
-  | "ux-designer";
+  | "ux-designer"
+  | "site-auditor";
 
 export interface AgentConfig {
   id: AgentId;

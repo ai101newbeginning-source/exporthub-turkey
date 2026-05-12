@@ -257,6 +257,92 @@ interface GaziantepAnimationProps {
 *[DEMO MODU — Gerçek API yanıtı için ANTHROPIC_API_KEY gereklidir]*
   `.trim(),
 
+  "site-auditor": (_msg) => `
+**Site Denetçisi & Büyüme Danışmanı** — Tam Site Raporu
+
+---
+
+### / — Ana Sayfa
+**Güçlü Yönler:**
+- Hero mesajı net, değer önerisi ilk 3 saniyede anlaşılıyor
+- CountUp animasyonu güven verici veri sinyali
+- 8 soruluk SSS bölümü organik trafik için güçlü
+
+**Kritik Boşluklar:**
+- "255 Milyar $" verisinin güncellendiği tarih yok — güvenilirliği azaltır
+- SSS'de "<details>" öğeleri JSON-LD schema işaretlemesi almıyor (SEO kaybı)
+
+**Büyüme Fikirleri:**
+- Haber bandı: "Bu hafta güncellenen veriler: İstanbul, Gaziantep"
+- Kullanıcı testimonial: "ExportHub ile ilk müşterimizi bulduk" kartı
+
+**SEO Notu:** Title 47 karakter ✅, H1 yok (section başlığı) ⚠️
+**Öncelik Skoru:** 7/10
+
+---
+
+### /veriler — İl Listesi
+**Güçlü Yönler:**
+- Harita görünümü coğrafi bağlam sağlıyor
+- Büyüme oranı badge'i karar alma için kritik
+
+**Kritik Boşluklar:**
+- Yalnızca 5 il var — ziyaretçi "81 il nerede?" diye düşünüyor, açıklama ekle
+- Harita üzerinde "Yakında daha fazla il" bildirimi olabilir
+
+**Büyüme Fikirleri:**
+- Bölgesel filtreleme (Marmara / Ege / Akdeniz / Karadeniz)
+- İhracat hacmi ile büyüme oranına göre sıralama toggle
+
+**SEO Notu:** Title iyi, description "güncel" kelimesi yıl ile desteklenmeli
+**Öncelik Skoru:** 6/10
+
+---
+
+### /sektorler/[sektor] — Sektör Detay
+**Güçlü Yönler:**
+- Ürün grubu bar chart oranları görselleştiriyor
+- Üst iller + pazar bağlamı sayfa derinliğini artırıyor
+
+**Kritik Boşluklar:**
+- Yıllık trend grafiği yok — "Bu sektör büyüyor mu?" sorusu yanıtsız
+- Rakip ülke karşılaştırması eklenebilir (Çin, Hindistan payları)
+
+**Büyüme Fikirleri:**
+- Sektör HS kodu tablosu (gümrük beyannamesi için)
+- "Bu sektörde ihracat yapan firmalar" lead generation formu
+
+**SEO Notu:** Her sektör için ayrı H1 + schema/Product işaretlemesi
+**Öncelik Skoru:** 8/10
+
+---
+
+### /rehberler — Rehber Listesi
+**Güçlü Yönler:**
+- 11 makale iyi bir içerik kütüphanesi oluşturuyor
+- Kategori renk kodlaması tarama kolaylığı sağlıyor
+
+**Kritik Boşluklar:**
+- Okuma süresi gösterimi var ama son güncelleme tarihi yok
+- Arama/filtre özelliği olmadan 11+ makalede gezinmek zorlaşıyor
+
+**Büyüme Fikirleri:**
+- Kategori bazlı filtreleme (Başlangıç / Teknik / Finansman)
+- "En çok okunanlar" sıralaması
+
+**SEO Notu:** Rehber listesi sayfasına FAQ schema eklenebilir
+**Öncelik Skoru:** 5/10
+
+---
+
+**Özet: En Yüksek Etkili 3 İyileştirme**
+1. 🔴 Sektör sayfasına yıllık trend grafiği → kullanıcı kalmaya değer içerik
+2. 🟠 Veri güncelleme tarihi → güvenilirlik sinyali
+3. 🟡 Rehberler kategorik filtreleme → UX ve iç bağlantı iyileştirmesi
+
+*[DEMO MODU — Gerçek API yanıtı için ANTHROPIC_API_KEY gereklidir]*
+  `.trim(),
+
   "ux-designer": (msg) => `
 **UX/UI Tasarımcı & Erişilebilirlik Uzmanı** — Tasarım Kararları
 

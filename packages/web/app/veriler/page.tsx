@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
+import dynamic from "next/dynamic";
+
+const TurkeyMap = dynamic(
+  () => import("@/components/ui/TurkeyMap").then((m) => m.TurkeyMap),
+  { ssr: false }
+);
 
 export const metadata: Metadata = {
   title: "Türkiye İhracat Verileri — İl Bazlı İstatistikler",
@@ -50,6 +56,29 @@ export default function VerilerPage() {
           Kaynak: TÜİK · TİM · Ticaret Bakanlığı
         </p>
       </div>
+
+      {/* Turkey Map */}
+      {provinces.length > 0 && (
+        <div className="mb-12 card-dark p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-base font-semibold text-white">Harita Görünümü</h2>
+              <p className="text-slate-500 text-xs mt-0.5">Üzerine gelin veya tıklayın</p>
+            </div>
+            <span className="text-xs text-slate-500 bg-slate-800 px-2 py-1 rounded">
+              {provinces.length} il gösteriliyor
+            </span>
+          </div>
+          <TurkeyMap
+            provinces={provinces.map((p) => ({
+              id: p.id,
+              il: p.il,
+              ihracat: Object.values(p.yillikIhracat).at(-1) ?? 0,
+              buyume: p.buyumeOrani2024,
+            }))}
+          />
+        </div>
+      )}
 
       {provinces.length > 0 ? (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -37,6 +37,9 @@ const SEKTOR_RENK: Record<string, string> = {
   otomotiv: "blue",
   tekstil: "purple",
   makine: "amber",
+  gida: "emerald",
+  kimya: "sky",
+  "demir-celik": "slate",
 };
 
 const RENK_CLASSES: Record<string, { badge: string; bar: string; icon: string }> = {
@@ -54,6 +57,21 @@ const RENK_CLASSES: Record<string, { badge: string; bar: string; icon: string }>
     badge: "text-amber-400 bg-amber-400/10",
     bar: "bg-amber-400",
     icon: "text-amber-400",
+  },
+  emerald: {
+    badge: "text-emerald-400 bg-emerald-400/10",
+    bar: "bg-emerald-400",
+    icon: "text-emerald-400",
+  },
+  sky: {
+    badge: "text-sky-400 bg-sky-400/10",
+    bar: "bg-sky-400",
+    icon: "text-sky-400",
+  },
+  slate: {
+    badge: "text-slate-300 bg-slate-700",
+    bar: "bg-slate-400",
+    icon: "text-slate-300",
   },
 };
 
@@ -169,12 +187,20 @@ export default function SektorlerPage() {
                 </div>
               </div>
 
-              {/* Top Ülkeler */}
-              <div className="border-t border-slate-800 pt-4">
-                <div className="text-xs text-slate-500 mb-1.5 font-medium">Başlıca Pazarlar</div>
-                <div className="text-xs text-slate-400">
-                  {sektor.topUlkeler.slice(0, 4).join(" · ")}
+              {/* Top Ülkeler + CTA */}
+              <div className="border-t border-slate-800 pt-4 flex items-end justify-between">
+                <div>
+                  <div className="text-xs text-slate-500 mb-1.5 font-medium">Başlıca Pazarlar</div>
+                  <div className="text-xs text-slate-400">
+                    {sektor.topUlkeler.slice(0, 3).join(" · ")}
+                  </div>
                 </div>
+                <Link
+                  href={`/sektorler/${sektor.id}`}
+                  className="text-turkish-red text-xs font-semibold hover:text-red-400 transition-colors flex-shrink-0 ml-4"
+                >
+                  Detay →
+                </Link>
               </div>
             </div>
           );

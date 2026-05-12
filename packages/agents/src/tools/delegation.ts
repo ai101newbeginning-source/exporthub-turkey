@@ -23,6 +23,7 @@ export const delegationTools: Anthropic.Tool[] = [
             "qa-tester",
             "remotion-specialist",
             "ux-designer",
+            "site-auditor",
           ],
         },
         task_type: {
@@ -464,6 +465,7 @@ export function getToolsForAgent(agentId: AgentId): Anthropic.Tool[] {
     ],
     "remotion-specialist": remotionTools,
     "ux-designer": uxDesignerTools,
+    "site-auditor": [],
   };
   return toolMap[agentId] ?? [];
 }

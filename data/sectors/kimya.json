@@ -1,0 +1,18 @@
+{
+  "id": "kimya",
+  "ad": "Kimya ve Plastik",
+  "toplamIhracat2024": 19.4,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 6.59,
+  "topIller": ["İstanbul", "Mersin", "Kocaeli", "İzmir", "Ankara"],
+  "topUlkeler": ["Almanya", "İtalya", "Fransa", "Amerika Birleşik Devletleri", "Irak", "Mısır"],
+  "urunGruplari": [
+    {"ad": "Petrokimya & Baz Kimyasallar", "pay": 27},
+    {"ad": "Plastik Hammadde & Granül", "pay": 20},
+    {"ad": "Plastik Ambalaj & Nihai Ürün", "pay": 16},
+    {"ad": "Boya, Vernik & Kaplama", "pay": 13},
+    {"ad": "Gübre & Tarım Kimyasalları", "pay": 11},
+    {"ad": "İlaç Ara Maddesi & Kozmetik", "pay": 7}
+  ],
+  "aciklama": "Kimya ve plastik sektörü 2024'te 19.4 milyar USD ile yeni rekorunu kırdı. PETKIM ve Tüpraş merkezli entegre petrokimya zinciri rekabetçiliğin temel kaynağı. Yeşil kimya segmentinde AB talep artışı önemli fırsat sunmaktadır."
+}

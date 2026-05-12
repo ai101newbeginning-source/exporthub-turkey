@@ -17,6 +17,7 @@ import { backendDevAgent } from "./agents/backend-dev.js";
 import { qaTesterAgent } from "./agents/qa-tester.js";
 import { remotionSpecialistAgent } from "./agents/remotion-specialist.js";
 import { uxDesignerAgent } from "./agents/ux-designer.js";
+import { siteAuditorAgent } from "./agents/site-auditor.js";
 import { validateTaskFlow, getRequiredApprovers } from "./workflow-rules.js";
 import { getMockResponse } from "./mocks.js";
 
@@ -32,6 +33,7 @@ const AGENTS: Record<AgentId, AgentConfig> = {
   "qa-tester": qaTesterAgent,
   "remotion-specialist": remotionSpecialistAgent,
   "ux-designer": uxDesignerAgent,
+  "site-auditor": siteAuditorAgent,
 };
 
 export class ExportHubOrchestrator {

@@ -1,0 +1,18 @@
+{
+  "id": "gida",
+  "ad": "Gıda ve Tarım Ürünleri",
+  "toplamIhracat2024": 34.8,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 8.42,
+  "topIller": ["İstanbul", "Mersin", "İzmir", "Bursa", "Antalya", "Konya"],
+  "topUlkeler": ["Irak", "Almanya", "İngiltere", "Rusya Federasyonu", "Amerika Birleşik Devletleri", "İtalya"],
+  "urunGruplari": [
+    {"ad": "İşlenmiş Gıda & Hazır Yemek", "pay": 21},
+    {"ad": "Taze Meyve & Sebze", "pay": 19},
+    {"ad": "Hububat, Bakliyat & Unlu Mamul", "pay": 16},
+    {"ad": "Fındık & Kuruyemiş", "pay": 14},
+    {"ad": "Yağlı Tohumlar & Bitkisel Yağ", "pay": 9},
+    {"ad": "Şeker, Çikolata & Şekerleme", "pay": 7}
+  ],
+  "aciklama": "Türkiye gıda ve tarım ihracatı 2024'te 34.8 milyar USD ile rekor kırdı. Dünya fındık ihracatının ~%68'ini ve kaysı ihracatının ~%74'ünü tek başına Türkiye karşılamaktadır. İşlenmiş gıda ve hazır yemek segmenti en hızlı büyüyen kalem."
+}

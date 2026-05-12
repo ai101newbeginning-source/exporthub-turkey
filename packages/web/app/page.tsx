@@ -147,6 +147,34 @@ export default function HomePage() {
                 s: "ATR belgesi ne işe yarar?",
                 c: "ATR (Admission Temporaire/Temporary Admission) belgesi, Türkiye'den AB ülkelerine ihraç edilen sanayi mallarının gümrük vergisinden muaf olmasını sağlayan dolaşım belgesidir. Gümrük Birliği kapsamındaki mallarda uygulanır.",
               },
+              {
+                s: "Akreditif mi, havale mi? Hangi ödeme yöntemi daha güvenli?",
+                c: "Akreditif (LC), ithalatçının bankasının —UCP 600 kuralları çerçevesinde— sevkiyat belgelerinin ibrazı karşılığında ödemeyi garanti ettiği bir banka taahhüdüdür; yeni veya güven tesis edilmemiş alıcılarda tercih edilmesi gereken en güvenli yöntemdir. Havale (T/T) daha hızlı ve düşük maliyetlidir ancak ödeme riski tamamen ihracatçıya aittir. Kural: yeni alıcı → akreditif, uzun vadeli güvenilir alıcı → havale.",
+              },
+              {
+                s: "Menşe şahadeti ile EUR.1 belgesinin farkı nedir?",
+                c: "Menşe şahadeti, malların Türkiye'de üretildiğini kanıtlayan Ticaret/Sanayi Odası onaylı belgedir; tercihli olmayan menşei ispat eder. EUR.1 ise Türkiye'nin STA'larında tercihli gümrük tarifesinden yararlanmak için düzenlenen belgedir. Kısaca: menşe şahadeti hangi ülkeden geldiğini, EUR.1 tercihli vergi avantajı hakkını kanıtlar.",
+              },
+              {
+                s: "Hedef ülkedeki gümrük vergisini nasıl öğrenebilirim?",
+                c: "İlk adım ürününüzün HS kodunu (GTİP) doğru tespit etmektir. Ardından ITC Trade Map (trademap.org), WTO Tariff Analysis Online veya AB için TARIC veritabanını kullanarak söz konusu ülkenin uyguladığı MFN ve varsa Türkiye'ye özgü tercihli vergi oranlarını sorgulayabilirsiniz. Türkiye ile hedef ülke arasında STA varsa EUR.1 ibraz zorunludur.",
+              },
+              {
+                s: "Yurt dışına ticari numune gönderirken nelere dikkat etmeliyim?",
+                c: "Numune ihracatı için de gümrük beyanı gereklidir; fatura değeri sembolik yazılabilir ancak üzerine açıkça 'Numune — Ticari Değeri Yoktur / No Commercial Value — Sample' ibaresi yazılmalıdır. İlaç, kozmetik veya gıda gibi ürünlerde hedef ülkenin ek sertifika talep edebileceğini göz önünde bulundurun.",
+              },
+              {
+                s: "İhracat kredi sigortası nedir, KOBİ'lere faydası var mı?",
+                c: "İhracat kredi sigortası, alıcının iflas etmesi veya politik nedenlerle ödemenin yapılamaması durumunda alacağı —genellikle %85-95 oranında— tazmin eder. Türk Eximbank bu hizmeti sunar. KOBİ'ler için en somut fayda: sigortalı alacağı bankaya teminat gösterip buna karşılık işletme kredisi kullanabilmektir.",
+              },
+              {
+                s: "ETGB nedir, e-ticaret ihracatında nasıl kullanılır?",
+                c: "Elektronik Ticaret Gümrük Beyannamesi (ETGB), Amazon, Etsy veya kendi web siteniz üzerinden yapılan bireysel/küçük hacimli ihracatlarda standart EX beyannamesi yerine kullanılan basitleştirilmiş gümrük beyanıdır. KOBİ'ler için en önemli avantajı kargo firmaları aracılığıyla hızlı gümrük çıkışı ve KDV iadesi hakkının korunmasıdır.",
+              },
+              {
+                s: "AB'ye satış için CE belgesi şart mı, nasıl alınır?",
+                c: "Evet; CE işareti Avrupa Ekonomik Alanı'na ihraç edilen pek çok ürün için yasal zorunluluktur. Süreç: uygulanabilecek direktifin tespiti (LVD, EMC, Makine Direktifi vb.), uygunluk değerlendirmesi (düşük riskli ürünlerde üretici kendi beyanı yeterli, yüksek riskli ürünlerde Onaylanmış Kuruluş / Notified Body devreye girer) ve Teknik Dosya hazırlığından oluşur.",
+              },
             ].map(({ s, c }, i) => (
               <details
                 key={i}

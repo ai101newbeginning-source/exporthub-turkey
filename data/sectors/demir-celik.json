@@ -1,0 +1,18 @@
+{
+  "id": "demir-celik",
+  "ad": "Demir Çelik",
+  "toplamIhracat2024": 22.1,
+  "birim": "milyar USD",
+  "buyumeOrani2024": 5.74,
+  "topIller": ["İstanbul", "Kocaeli", "Karabük", "İzmir", "Sivas"],
+  "topUlkeler": ["İtalya", "Amerika Birleşik Devletleri", "Irak", "İsrail", "Mısır", "Romanya"],
+  "urunGruplari": [
+    {"ad": "Yassı Çelik (HRC, CRC, Galvaniz)", "pay": 29},
+    {"ad": "Uzun Ürünler (İnşaat Demiri, Tel)", "pay": 28},
+    {"ad": "Boru, Profil & Tüp", "pay": 18},
+    {"ad": "Dövme & Döküm Çelik", "pay": 10},
+    {"ad": "Paslanmaz & Alaşımlı Çelik", "pay": 9},
+    {"ad": "Çelik Tel & Bağlantı Elemanları", "pay": 6}
+  ],
+  "aciklama": "Türkiye dünya ham çelik üretiminde 8. büyük üretici. 2024'te 22.1 milyar USD ihracat. AB'nin CBAM (Karbon Sınır Mekanizması) 2026 tam uygulaması sektörün önündeki en kritik dışsal risk faktörü."
+}

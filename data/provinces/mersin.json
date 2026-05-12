@@ -1,0 +1,24 @@
+{
+  "id": "mersin",
+  "il": "Mersin",
+  "bolge": "Akdeniz",
+  "yillikIhracat": {"2020": 5.67, "2021": 7.43, "2022": 9.81, "2023": 10.54, "2024": 11.38},
+  "birim": "milyar USD",
+  "buyumeOrani2024": 7.97,
+  "topSektorler": [
+    {"ad": "Kimyasallar & Gübre", "pay": 24.8},
+    {"ad": "Tarım Ürünleri & Tahıl", "pay": 21.3},
+    {"ad": "Petrol Ürünleri & Rafinaj", "pay": 16.7},
+    {"ad": "Plastik & Kauçuk", "pay": 11.2},
+    {"ad": "Demir-Çelik", "pay": 9.4}
+  ],
+  "topUlkeler": [
+    {"ulke": "Irak", "pay": 16.3},
+    {"ulke": "Mısır", "pay": 11.8},
+    {"ulke": "İtalya", "pay": 9.4},
+    {"ulke": "İsrail", "pay": 7.2},
+    {"ulke": "Libya", "pay": 6.5}
+  ],
+  "ihracatciSayisi": 6540,
+  "aciklama": "Mersin, Türkiye'nin en büyük konteyner limanına (MIP) ev sahipliği yapması nedeniyle yüksek ihracat hacmi kaydetmektedir. Orta Doğu ve Kuzey Afrika pazarlarına coğrafi yakınlık önemli rekabet avantajı sağlamaktadır."
+}
