@@ -34,5 +34,65 @@
     "approved": false,
     "revisionCount": 0,
     "outputLength": 16248
+  },
+  {
+    "timestamp": "2026-05-13T09:04:27.556Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 8358,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 1572
+  },
+  {
+    "timestamp": "2026-05-13T09:05:59.609Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 7791,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 1179
+  },
+  {
+    "timestamp": "2026-05-13T09:07:32.462Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 27909,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 5975
+  },
+  {
+    "timestamp": "2026-05-13T09:14:27.851Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 1596020,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 19678
+  },
+  {
+    "timestamp": "2026-05-13T09:19:45.811Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 266342,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 1197
   }
 ]

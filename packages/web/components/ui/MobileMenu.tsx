@@ -1,15 +1,11 @@
 "use client";
 
 import { useState } from "react";
-
-const LINKS = [
-  { href: "/veriler", label: "İhracat Verileri" },
-  { href: "/sektorler", label: "Sektörler" },
-  { href: "/rehberler", label: "Rehberler" },
-];
+import Link from "next/link";
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [dataOpen, setDataOpen] = useState(false);
 
   return (
     <div className="md:hidden">
@@ -31,23 +27,58 @@ export function MobileMenu() {
 
       {open && (
         <div className="absolute top-16 left-0 right-0 bg-slate-950/98 backdrop-blur border-b border-slate-800 px-4 py-4 z-50 animate-fade-up">
-          {LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="block py-3 text-slate-300 hover:text-white border-b border-slate-800/50 last:border-0 transition-colors"
+          {/* Veriler accordion */}
+          <button
+            onClick={() => setDataOpen((v) => !v)}
+            className="w-full flex items-center justify-between py-3 text-slate-300 hover:text-white border-b border-slate-800/50 transition-colors"
+          >
+            <span>Veriler</span>
+            <svg
+              className={`w-3.5 h-3.5 transition-transform ${dataOpen ? "rotate-180" : ""}`}
+              viewBox="0 0 12 12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
             >
-              {link.label}
-            </a>
-          ))}
-          <a
+              <path d="M2 4l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          {dataOpen && (
+            <div className="pl-4 border-b border-slate-800/50">
+              <Link
+                href="/veriler"
+                onClick={() => setOpen(false)}
+                className="block py-2.5 text-slate-400 hover:text-white transition-colors text-sm"
+              >
+                İl Bazlı Veriler
+                <span className="block text-xs text-slate-600 mt-0.5">11 il, yıllık ihracat trendi</span>
+              </Link>
+              <Link
+                href="/sektorler"
+                onClick={() => setOpen(false)}
+                className="block py-2.5 text-slate-400 hover:text-white transition-colors text-sm"
+              >
+                Sektör Analizleri
+                <span className="block text-xs text-slate-600 mt-0.5">9 sektör, ürün grupları</span>
+              </Link>
+            </div>
+          )}
+
+          <Link
+            href="/rehberler"
+            onClick={() => setOpen(false)}
+            className="block py-3 text-slate-300 hover:text-white border-b border-slate-800/50 transition-colors"
+          >
+            Rehberler
+          </Link>
+
+          <Link
             href="/rehberler/ilk-ihracat"
             onClick={() => setOpen(false)}
             className="block mt-3 bg-turkish-red text-white px-4 py-2.5 rounded-lg text-sm text-center hover:bg-red-700 transition-colors"
           >
-            Başlangıç Rehberi
-          </a>
+            İhracata Başla
+          </Link>
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { MobileMenu } from "@/components/ui/MobileMenu";
+import { NavDropdown } from "@/components/ui/NavDropdown";
 import { slugify } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -42,12 +43,13 @@ export default function RootLayout({
                 <span className="text-slate-400 text-sm ml-1">Türkiye</span>
               </Link>
               <nav className="hidden md:flex items-center gap-6 text-sm">
-                <Link href="/veriler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
-                  İhracat Verileri
-                </Link>
-                <Link href="/sektorler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
-                  Sektörler
-                </Link>
+                <NavDropdown
+                  label="Veriler"
+                  items={[
+                    { href: "/veriler", label: "İl Bazlı Veriler", description: "11 il, yıllık ihracat trendi" },
+                    { href: "/sektorler", label: "Sektör Analizleri", description: "9 sektör, ürün grupları" },
+                  ]}
+                />
                 <Link href="/rehberler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   Rehberler
                 </Link>
@@ -55,7 +57,7 @@ export default function RootLayout({
                   href="/rehberler/ilk-ihracat"
                   className="bg-turkish-red text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors shadow-sm"
                 >
-                  Başlangıç Rehberi
+                  İhracata Başla
                 </Link>
               </nav>
               <MobileMenu />

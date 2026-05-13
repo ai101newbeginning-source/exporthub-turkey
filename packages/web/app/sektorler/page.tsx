@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { readFileSync, readdirSync } from "fs";
+import { slugify } from "@/lib/utils";
 import { join } from "path";
 
 export const metadata: Metadata = {
@@ -196,7 +197,7 @@ export default function SektorlerPage() {
                   {sektor.topIller.slice(0, 3).map((il) => (
                     <Link
                       key={il}
-                      href={`/veriler/${il.toLowerCase().replace("İ", "i").replace("ı", "i").replace("ş", "s").replace("ğ", "g").replace("ü", "u").replace("ö", "o").replace("ç", "c")}`}
+                      href={`/veriler/${slugify(il)}`}
                       className="text-xs text-slate-400 bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded transition-colors"
                     >
                       {il}
