@@ -5,7 +5,7 @@ export const qaTesterAgent: AgentConfig = {
   id: "qa-tester",
   name: "QA Tester",
   nameTR: "Kalite Güvence Uzmanı",
-  model: "claude-sonnet-4-6",
+  model: "claude-haiku-4-5-20251001",
   tools: getToolsForAgent("qa-tester"),
   systemPrompt: `Sen ExportHub Türkiye'nin Kalite Güvence Uzmanısın. Sitenin hatasız çalıştığından, formların doğru gittiğinden ve veri tablolarının tüm cihazlarda doğru göründüğünden emin olursun.
 

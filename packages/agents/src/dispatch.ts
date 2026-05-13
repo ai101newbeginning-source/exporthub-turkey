@@ -104,57 +104,18 @@ const INTENT_ROUTES: Record<string, RouteConfig> = {
   },
 };
 
-const ROUTER_SYSTEM_PROMPT = `Sen ExportHub Türkiye projesinin akıllı istek yönlendiricisisin.
-
-Kullanıcı isteğini analiz et ve EN UYGUN intent kategorisini seç:
-- tasarim: Renk, font, layout, CSS, UI/UX, görsel tasarım
-- veri: Sayısal veri, JSON, istatistik, il/sektör verisi ekleme
-- icerik: Metin yazma, açıklama, FAQ, Türkçe içerik
-- seo: Metadata, arama, başlık, açıklama optimizasyonu
-- denetim: Site denetimi, test, kalite kontrol, bug raporu
-- ozellik: Tamamen yeni sayfa, bileşen veya sistem özelliği
-- performans: Animasyon, yükleme hızı, bundle, Core Web Vitals
-- genel: Planlama, koordinasyon, genel soru
-
-SADECE şu 10 kategoriden birini seç, başka kategori üretme:
-tasarim | veri | icerik | seo | denetim | ozellik | performans | genel | rapor | revize
-
-Sadece şu JSON formatında yanıt ver (başka hiçbir şey yazma):
-{"intent":"<kategori>","reason":"<neden bu kategori, 1 cümle>"}`;
-
-const VALID_INTENTS = new Set(Object.keys(INTENT_ROUTES));
-
-async function detectIntent(
-  orchestrator: ExportHubOrchestrator,
-  request: string
-): Promise<string> {
-  try {
-    const result = await orchestrator.runAgent(
-      "project-manager",
-      `İstek: "${request}"\n\nYukarıdaki sisteme göre intent JSON'u döndür.`
-    );
-    const match = result.output.match(/\{[^}]+\}/);
-    if (match) {
-      const parsed = JSON.parse(match[0]);
-      const intent = parsed.intent as string;
-      // Sadece geçerli route'ları kabul et
-      if (intent && VALID_INTENTS.has(intent)) return intent;
-    }
-  } catch {
-    // fallback: keyword matching
-  }
-
-  // Keyword fallback
+function detectIntent(request: string): Promise<string> {
   const req = request.toLowerCase();
-  if (/renk|tasarım|css|font|layout|dark|light|tema|görün/.test(req)) return "tasarim";
-  if (/veri|json|data|istatistik|rakam|sayı|il|sektör ekle|güncelle/.test(req)) return "veri";
-  if (/yaz|metin|içerik|açıklama|faq|rehber|türkçe/.test(req)) return "icerik";
-  if (/seo|meta|başlık|arama|google|index/.test(req)) return "seo";
-  if (/denet|test|audit|kontrol|bug|hata/.test(req)) return "denetim";
-  if (/animasyon|performans|hız|yükleme|bundle/.test(req)) return "performans";
-  if (/rapor|performans raporu|metrik|istatistik|özet/.test(req)) return "rapor";
-  if (/revize|revizyon|düzelt|red|reddedil/.test(req)) return "revize";
-  return "genel";
+  if (/renk|tasarım|css|font|layout|dark|light|tema|görün|link|bileşen|nav|footer|ui|ux/.test(req)) return Promise.resolve("tasarim");
+  if (/veri|json|data|istatistik|rakam|sayı|il|sektör ekle|güncelle/.test(req)) return Promise.resolve("veri");
+  if (/yaz|metin|içerik|açıklama|faq|türkçe/.test(req)) return Promise.resolve("icerik");
+  if (/seo|meta|başlık|arama|google|index|robots|canonical/.test(req)) return Promise.resolve("seo");
+  if (/denet|test|audit|kontrol|bug|hata/.test(req)) return Promise.resolve("denetim");
+  if (/animasyon|performans|hız|yükleme|bundle|core web/.test(req)) return Promise.resolve("performans");
+  if (/rapor|performans raporu|metrik|özet/.test(req)) return Promise.resolve("rapor");
+  if (/revize|revizyon|düzelt|red|reddedil/.test(req)) return Promise.resolve("revize");
+  if (/rehber|özellik|yeni sayfa|yeni bileşen/.test(req)) return Promise.resolve("ozellik");
+  return Promise.resolve("genel");
 }
 
 async function dispatch(request: string): Promise<void> {
@@ -169,7 +130,7 @@ async function dispatch(request: string): Promise<void> {
 
   // 1. Intent tespiti
   console.log("🔍  Intent tespit ediliyor...");
-  const intent = await detectIntent(orchestrator, request);
+  const intent = await detectIntent(request);
   const route = INTENT_ROUTES[intent] ?? INTENT_ROUTES.genel;
 
   console.log(`✅  Intent: ${intent} — ${route.desc}`);

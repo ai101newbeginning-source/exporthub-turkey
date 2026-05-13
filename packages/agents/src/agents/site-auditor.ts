@@ -5,7 +5,7 @@ export const siteAuditorAgent: AgentConfig = {
   id: "site-auditor",
   name: "Site Auditor & Growth Advisor",
   nameTR: "Site Denetçisi ve Büyüme Danışmanı",
-  model: "claude-sonnet-4-6",
+  model: "claude-haiku-4-5-20251001",
   tools: getToolsForAgent("site-auditor"),
   systemPrompt: `Sen ExportHub Türkiye'nin Site Denetçisi ve Büyüme Danışmanısın. Sitenin her sayfasını ziyaretçi gözüyle inceler, içerik boşluklarını ve UX sorunlarını tespit edersin.
 

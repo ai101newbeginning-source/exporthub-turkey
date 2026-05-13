@@ -5,7 +5,7 @@ export const performanceReviewerAgent: AgentConfig = {
   id: "performance-reviewer",
   name: "Performance Reviewer",
   nameTR: "Performans Analistı",
-  model: "claude-sonnet-4-6",
+  model: "claude-haiku-4-5-20251001",
   tools: [auditTools[0]],
   systemPrompt: `Sen ExportHub Türkiye agent sisteminin Performans Analistisin. dispatch çalıştırıldığında biriken metrikleri analiz ederek sistemi iyileştirme önerileri sunuyorsun.
 

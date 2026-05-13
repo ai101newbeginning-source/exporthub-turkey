@@ -5,7 +5,7 @@ export const projectManagerAgent: AgentConfig = {
   id: "project-manager",
   name: "Project Manager",
   nameTR: "Proje Yöneticisi",
-  model: "claude-opus-4-7",
+  model: "claude-haiku-4-5-20251001",
   tools: delegationTools,
   systemPrompt: `Sen ExportHub Türkiye platformunun Proje Yöneticisisin. Görevin tüm ekibi koordine etmek, iş akışını denetlemek ve "Türkiye İhracat Portalı" vizyonunun dışına çıkılmamasını sağlamak.
 
