@@ -103,7 +103,7 @@ export async function generateMetadata({
     return { title: "İl Bulunamadı", robots: { index: false, follow: false } };
   const latest = Object.values(province.yillikIhracat).at(-1)?.toFixed(1);
   return {
-    title: `${province.il} İhracat Verileri 2024-2026 — Sektörler, Pazarlar, Rakamlar`,
+    title: `${province.il} İhracat Verileri 2024-2026`,
     description: `${province.il} ilinin ihracat verileri (2020-2026). ${province.topSektorler[0]?.ad ?? ""} başta olmak üzere ${province.topSektorler.length} sektörde $${latest} milyar USD ihracat. TÜİK/TİM verileri.`,
   };
 }

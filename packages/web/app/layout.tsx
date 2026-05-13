@@ -5,8 +5,9 @@ import { MobileMenu } from "@/components/ui/MobileMenu";
 import { slugify } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://exporthub.com.tr"),
   title: {
-    template: "%s | ExportHub Türkiye",
+    template: "%s | ExportHub",
     default: "ExportHub Türkiye — İhracat Verileri ve Rehberler",
   },
   description:
