@@ -343,6 +343,66 @@ interface GaziantepAnimationProps {
 *[DEMO MODU — Gerçek API yanıtı için ANTHROPIC_API_KEY gereklidir]*
   `.trim(),
 
+  "revision-coordinator": (msg) => `
+**Revizyon Koordinatörü** — Revizyon Döngüsü Başlatıldı
+
+"${msg.slice(0, 60)}..." için revizyon analizi:
+
+**Red Gerekçesi Analizi:**
+- ❌ YANLIŞ ÇERÇEVELEME: Teknik terimler yeterince açıklanmamış
+- ⚠️ EKSİK BİLGİ: Kaynak referansları eksik (TÜİK/TİM)
+
+**Content Marketing'e Revizyon Talimatı (Tur 1/3):**
+
+---
+**REVİZYON TALİMATI**
+
+**Yapılması Gerekenler:**
+- [ ] "Incoterms" terimini ilk kullanımda parantez içinde açıkla
+- [ ] Her istatistik için TÜİK veya TİM kaynağı ekle
+- [ ] Sonuç bölümüne "Sonraki Adım" kılavuz linki ekle
+
+**Korunması Gerekenler:**
+- Giriş paragrafı → hedef kitleyi iyi tanımlıyor, değiştirme
+- Tablo yapısı → okunabilirlik açısından iyi
+
+**Referans Kaynaklar:**
+- TÜİK Dış Ticaret İstatistikleri 2024
+- TİM Aylık İhracat Bülteni
+---
+
+Revize içerik hazır olduğunda Senior Export Expert onayına gönderilecek.
+
+*[DEMO MODU — Gerçek API yanıtı için ANTHROPIC_API_KEY gereklidir]*
+  `.trim(),
+
+  "performance-reviewer": (_msg) => `
+**Performans Analistı** — Agent Sistem Raporu
+
+## 📊 ExportHub Agent Performans Raporu
+
+### Özet
+| Metrik | Değer |
+|--------|-------|
+| Toplam dispatch | 0 (henüz veri yok) |
+| Ortalama süre | — |
+| Onay oranı | — |
+
+### 🔵 Sistem Durumu
+\`packages/agents/data/performance.json\` dosyası henüz oluşturulmadı.
+
+İlk dispatch çalıştırıldığında metrikler otomatik olarak kaydedilmeye başlayacak.
+
+**Hızlı Başlangıç:**
+\`\`\`bash
+cd packages/agents && pnpm dispatch "içerik yaz: istanbul ihracat"
+cd packages/agents && pnpm dispatch "site denetle"
+cd packages/agents && pnpm dispatch "performans raporu"
+\`\`\`
+
+*[DEMO MODU — Gerçek API yanıtı için ANTHROPIC_API_KEY gereklidir]*
+  `.trim(),
+
   "ux-designer": (msg) => `
 **UX/UI Tasarımcı & Erişilebilirlik Uzmanı** — Tasarım Kararları
 

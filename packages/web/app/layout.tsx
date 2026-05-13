@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 import { MobileMenu } from "@/components/ui/MobileMenu";
+import { slugify } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: {
@@ -33,27 +35,27 @@ export default function RootLayout({
         <header className="sticky top-0 z-50 bg-white/96 backdrop-blur border-b border-slate-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
-              <a href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2">
                 <span className="text-turkish-red font-bold text-xl">Export</span>
                 <span className="text-slate-900 font-bold text-xl">Hub</span>
                 <span className="text-slate-400 text-sm ml-1">Türkiye</span>
-              </a>
+              </Link>
               <nav className="hidden md:flex items-center gap-6 text-sm">
-                <a href="/veriler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
+                <Link href="/veriler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   İhracat Verileri
-                </a>
-                <a href="/sektorler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
+                </Link>
+                <Link href="/sektorler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   Sektörler
-                </a>
-                <a href="/rehberler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
+                </Link>
+                <Link href="/rehberler" className="text-slate-600 hover:text-slate-900 font-medium transition-colors">
                   Rehberler
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/rehberler/ilk-ihracat"
                   className="bg-turkish-red text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors shadow-sm"
                 >
                   Başlangıç Rehberi
-                </a>
+                </Link>
               </nav>
               <MobileMenu />
             </div>
@@ -77,13 +79,13 @@ export default function RootLayout({
                 <div>
                   <div className="text-slate-900 font-semibold mb-3">İller</div>
                   {["İstanbul", "Kocaeli", "Bursa", "Gaziantep", "İzmir"].map((il) => (
-                    <a
+                    <Link
                       key={il}
-                      href={`/veriler/${il.toLowerCase().replace("İ", "i").replace("ş", "s")}`}
+                      href={`/veriler/${slugify(il)}`}
                       className="block text-slate-400 hover:text-slate-900 mb-1.5 transition-colors"
                     >
                       {il}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div>

@@ -24,6 +24,8 @@ export const delegationTools: Anthropic.Tool[] = [
             "remotion-specialist",
             "ux-designer",
             "site-auditor",
+            "revision-coordinator",
+            "performance-reviewer",
           ],
         },
         task_type: {
@@ -378,6 +380,56 @@ export const contentTools: Anthropic.Tool[] = [
   },
 ];
 
+export const auditTools: Anthropic.Tool[] = [
+  {
+    name: "read_file",
+    description: "Proje dizinindeki bir dosyayı oku (app/, data/ gibi).",
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        path: {
+          type: "string",
+          description: "Proje köküne göre göreli dosya yolu, ör: packages/web/app/page.tsx",
+        },
+      },
+      required: ["path"],
+    },
+  },
+  {
+    name: "list_pages",
+    description: "Next.js app/ dizinindeki mevcut sayfaları listele.",
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        dir: {
+          type: "string",
+          description: "Listelenecek dizin, varsayılan: packages/web/app",
+        },
+      },
+      required: [],
+    },
+  },
+  {
+    name: "check_seo",
+    description: "Bir sayfa dosyasının SEO yapısını analiz et: title, description, H1, H2'ler, schema markup.",
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        path: {
+          type: "string",
+          description: "Analiz edilecek sayfa dosyasının yolu",
+        },
+      },
+      required: ["path"],
+    },
+  },
+];
+
+export const revisionTools: Anthropic.Tool[] = [
+  delegationTools[0],
+  delegationTools[1],
+];
+
 export function getToolsForAgent(agentId: AgentId): Anthropic.Tool[] {
   const toolMap: Record<AgentId, Anthropic.Tool[]> = {
     "project-manager": delegationTools,
@@ -465,7 +517,9 @@ export function getToolsForAgent(agentId: AgentId): Anthropic.Tool[] {
     ],
     "remotion-specialist": remotionTools,
     "ux-designer": uxDesignerTools,
-    "site-auditor": [],
+    "site-auditor": auditTools,
+    "revision-coordinator": revisionTools,
+    "performance-reviewer": [auditTools[0]],
   };
   return toolMap[agentId] ?? [];
 }

@@ -3,7 +3,9 @@ import Link from "next/link";
 import { StatsCounter } from "@/components/ui/StatsCounter";
 
 export const metadata: Metadata = {
-  title: "ExportHub Türkiye — İhracat Verileri ve Rehberler",
+  title: "Türkiye İhracat Verileri 2024-2026 | ExportHub",
+  description:
+    "TÜİK ve TİM verilerine dayalı Türkiye ihracat istatistikleri. 11 il bazlı veriler, 9 sektör analizi ve ihracata başlamak için adım adım rehberler. 255 milyar USD ihracat.",
 };
 
 const FEATURED_PROVINCES = [
@@ -128,6 +130,22 @@ export default function HomePage() {
           <div className="space-y-3">
             {[
               {
+                s: "İngilizce bilmeden ihracat yapılabilir mi?",
+                c: "Evet. Türkiye'den ihracat yapan KOBİ'lerin büyük bölümü İngilizce bilmeyen sahiplerle yönetilmektedir. Pratik çözüm: gümrük müşaviriniz teknik belgeleri halleder; yabancı alıcı bulma aşamasında ise DeepL/ChatGPT ile hazırlanmış kısa e-postalar ve fiyat listeleri çoğunlukla yeterlidir. Uzun vadede temel ticaret İngilizcesi (e-posta, Incoterms terimleri) öğrenmek işinizi kolaylaştırır.",
+              },
+              {
+                s: "Minimum ihracat miktarı veya değeri var mı?",
+                c: "Yasal bir minimum yoktur. Ancak pratik alt sınır; kargo masraflarını karşılayacak ve gümrük müşaviri ücretini kârlı kılacak tutardır. Küçük hacimli ilk ihracatlar için ekspres kargo (DHL/UPS) ve ETGB beyannamesi kullanmak geleneksel deniz yoluna göre çok daha düşük sabit maliyet gerektirir. E-ticaret satıcıları Etsy/Amazon üzerinden tek parça ihracat yapabilmektedir.",
+              },
+              {
+                s: "Sahte alıcı tuzağından nasıl korunurum?",
+                c: "İlk kural: ödeme almadan mal gönderme. Yeni alıcılarda peşin ödeme veya akreditif talep edin. Şüphelendiğiniz alıcıyı Dun & Bradstreet, Kompass veya ITC Trade Map üzerinden teyit edin. Alıcının ülkesindeki Türk Ticaret Müşavirliği'ne danışabilirsiniz; kara listeler ve şikâyet geçmişi hakkında bilgi verirler. Ödeme yapılmadan önce konşimentoyu (BL) asla teslim etmeyin.",
+              },
+              {
+                s: "GTİP (HS) kodum nedir, nasıl bulurum?",
+                c: "GTİP (Gümrük Tarife İstatistik Pozisyonu), ürününüzü uluslararası 6-12 haneli sistemle sınıflayan koddur; hem gümrük vergisi hem KDV istisnası bu koda göre belirlenir. Bulma yöntemi: Ticaret Bakanlığı'nın esnaf.gov.tr portali üzerindeki GTİP sorgulama aracını veya gümrük.gov.tr'yi kullanın. Yanlış GTİP beyanı cezai işlem gerektirebilir; ilk ihracatta gümrük müşavirinizle doğrulayın.",
+              },
+              {
                 s: "Türkiye'den ihracat yapmak için ne gerekir?",
                 c: "Vergi numarası ve ticaret sicili kaydı yeterlidir. Ek bir ihracat lisansı gerekmez. Bazı ürünler (silah, ilaç, tarım ürünleri vb.) için Ticaret Bakanlığı'ndan özel izin alınması zorunludur.",
               },
@@ -146,6 +164,22 @@ export default function HomePage() {
               {
                 s: "İhracat bedeli ne zaman yurda getirilmeli?",
                 c: "Kambiyo mevzuatı gereği ihracat bedelinin sevkiyat tarihinden itibaren 180 gün içinde yurda getirilmesi zorunludur. Sürenin aşılması durumunda Hazine'ye cezai faiz uygulanabilir.",
+              },
+              {
+                s: "Hangi ülkelere ihracat yasak veya kısıtlı?",
+                c: "BM Güvenlik Konseyi yaptırımları kapsamındaki ülkelere (Kuzey Kore, İran, Sudan vb.) silah ve çift kullanımlı mal ihracatı yasaktır. AB ve ABD yaptırım listelerine de Türkiye'deki banka ve firmalar dikkat etmek zorundadır. Hedef ülkenin güncel yaptırım durumunu Hazine ve Maliye Bakanlığı'nın yaptırımlar portalinden veya hukuk danışmanınızdan teyit edin. Tarım, ilaç ve savunma ürünleri için ek ülke bazlı kısıtlamalar uygulanabilir.",
+              },
+              {
+                s: "KOBİ büyük firmalarla uluslararası pazarda nasıl rekabet eder?",
+                c: "KOBİ'lerin en güçlü avantajları: esneklik (küçük siparişlere uyum), niş uzmanlık ve kişisel ilişki kurma kapasitesi. Pratik adımlar: (1) B2B platformları (Alibaba, Europages, Global Sources) ile ilk alıcıya düşük maliyetle ulaşın, (2) TİM sektör birliğinin toplu stand katılım hibesiyle yurt dışı fuarlara katılın, (3) fiyat değil kalite/tasarım/teslim süresi üzerinden konumlanın. Büyük firmalarla aynı müşteri segmentinde rekabet etmek yerine onların tedarikçisi olmayı da değerlendirin.",
+              },
+              {
+                s: "KDV iadesi ne zaman ve nasıl yapılır?",
+                c: "İhracat teslimleri KDV'den istisnadır; üretim/alım sürecinde yüklenilen KDV ise iade alınabilir. İki yol vardır: (1) Mahsup — sonraki dönem KDV beyannamelerinden düşme, (2) Nakden iade — belirli tutarın üzerinde ve YMM raporu eşliğinde talep edildiğinde Gelir İdaresi Başkanlığı hesabınıza aktarım yapar. İhracat gerçekleşmeden önce iade başlatılamaz; fiili ihracat belgesi (gümrük çıkış beyannamesi) zorunludur.",
+              },
+              {
+                s: "Transit ticaret nedir, Türkiye için avantajı var mı?",
+                c: "Transit ticarette mal Türkiye'den satın alınıp üçüncü ülkedeki alıcıya gönderilir; mal fiziksel olarak Türkiye'ye girmez veya kısa süreli transit geçiş yapar. Türkiye, coğrafi konumu sayesinde Orta Asya-Avrupa ve Orta Doğu-Avrupa koridorlarında doğal bir transit merkezi işlevi görür. Vergi avantajı: transit ticaretten elde edilen kazancın %50'si kurumlar vergisinden istisnadır (KVK Madde 10/h). Liman ve serbest bölge altyapısı bu modeli KOBİ'ler için de erişilebilir kılmaktadır.",
               },
               {
                 s: "Türkiye'nin hangi ülkelerle serbest ticaret anlaşması var?",
@@ -280,6 +314,48 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Türkiye'den ihracat yapmak için ne gerekir?",
+                acceptedAnswer: { "@type": "Answer", text: "Vergi numarası ve ticaret sicili kaydı yeterlidir. Ek bir ihracat lisansı gerekmez. Bazı ürünler için Ticaret Bakanlığı'ndan özel izin alınması zorunludur." },
+              },
+              {
+                "@type": "Question",
+                name: "İngilizce bilmeden ihracat yapılabilir mi?",
+                acceptedAnswer: { "@type": "Answer", text: "Evet. Gümrük müşaviriniz teknik belgeleri halleder; temel ticaret İngilizcesi (e-posta, Incoterms terimleri) ve DeepL gibi araçlar çoğunlukla yeterlidir." },
+              },
+              {
+                "@type": "Question",
+                name: "Minimum ihracat miktarı veya değeri var mı?",
+                acceptedAnswer: { "@type": "Answer", text: "Yasal bir minimum yoktur. Küçük hacimli ilk ihracatlar için ekspres kargo ve ETGB beyannamesi kullanmak en pratik yoldur." },
+              },
+              {
+                "@type": "Question",
+                name: "FOB ve CIF arasındaki fark nedir?",
+                acceptedAnswer: { "@type": "Answer", text: "FOB'da satıcı malı gemiye yükler, risk bu noktada alıcıya geçer. CIF'de ise satıcı navlun ve sigortayı da üstlenir; risk yine yükleme limanında devredilir." },
+              },
+              {
+                "@type": "Question",
+                name: "GTİP (HS) kodum nedir, nasıl bulurum?",
+                acceptedAnswer: { "@type": "Answer", text: "Ticaret Bakanlığı'nın esnaf.gov.tr portali üzerindeki GTİP sorgulama aracını veya gümrük.gov.tr'yi kullanın. Yanlış GTİP beyanı cezai işlem gerektirebilir." },
+              },
+              {
+                "@type": "Question",
+                name: "İhracat teşviklerinden nasıl yararlanabilirim?",
+                acceptedAnswer: { "@type": "Answer", text: "KOSGEB'in uluslararasılaşma desteği, TİM'in yurt dışı fuar katılım hibesi ve Eximbank'ın ihracat kredileri başlıca desteklerdir." },
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Bülten CTA */}
       <section className="py-16 border-t border-slate-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

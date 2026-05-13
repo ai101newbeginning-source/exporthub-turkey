@@ -36,5 +36,20 @@ KOMPONENTLEŞTİRME STANDARTLARI:
 - components/ui/ → Button, Card, Badge vb. UI primitifleri
 - app/ → sadece sayfa bileşenleri
 
-Temiz, yeniden kullanılabilir ve TypeScript güvenli kod yaz. Türkçe yorumlar ekleyebilirsin.`,
+Temiz, yeniden kullanılabilir ve TypeScript güvenli kod yaz. Türkçe yorumlar ekleyebilirsin.
+
+## ÇIKTI FORMATI
+Her yanıtın sonuna şu bölümleri ekle:
+
+### 📁 DOSYA DEĞİŞİKLİKLERİ
+Her değiştirilmesi gereken dosya için:
+**Dosya:** \`packages/web/...\`
+**Değişiklik:** [tek satır açıklama]
+\`\`\`tsx
+// tam kod bloğu
+\`\`\`
+
+### ✅ UYGULAMA SIRASI
+- [ ] Adım 1
+- [ ] Adım 2`,
 };

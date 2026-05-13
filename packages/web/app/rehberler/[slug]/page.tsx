@@ -13,7 +13,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const rehber = getRehber(params.slug);
-  if (!rehber) return { title: "Rehber Bulunamadı" };
+  if (!rehber) return { title: "Rehber Bulunamadı", robots: { index: false, follow: false } };
   return {
     title: rehber.baslik,
     description: rehber.ozet,
@@ -113,7 +113,7 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
       )}
 
       {/* Kaynaklar */}
-      <div className="border-t border-slate-200 pt-6 flex items-center justify-between flex-wrap gap-4">
+      <div className="border-t border-slate-200 pt-6 flex items-center justify-between flex-wrap gap-4 mb-10">
         <div>
           <span className="text-xs text-slate-500">Kaynaklar: </span>
           <span className="text-xs text-slate-400">{rehber.kaynaklar.join(" · ")}</span>
@@ -125,6 +125,44 @@ export default function RehberDetailPage({ params }: { params: { slug: string } 
           ← Tüm Rehberler
         </Link>
       </div>
+
+      {/* Sonraki Adım */}
+      <div className="border-t border-slate-200 pt-8">
+        <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-4">Sonraki Adım</div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <Link href="/veriler" className="card-dark p-5 hover:border-turkish-red/40 group transition-all">
+            <div className="text-xs text-turkish-red font-semibold mb-2">VERİ</div>
+            <div className="text-slate-900 text-sm font-semibold group-hover:text-turkish-red transition-colors mb-1">
+              İl Bazlı İhracat Verileri
+            </div>
+            <div className="text-slate-400 text-xs">İstanbul, İzmir, Gaziantep ve diğer illerin ihracat istatistikleri</div>
+            <div className="text-turkish-red text-xs font-medium mt-3">Verilere Git →</div>
+          </Link>
+          <Link href="/rehberler" className="card-dark p-5 hover:border-turkish-red/40 group transition-all">
+            <div className="text-xs text-turkish-red font-semibold mb-2">REHBER</div>
+            <div className="text-slate-900 text-sm font-semibold group-hover:text-turkish-red transition-colors mb-1">
+              Diğer İhracat Rehberleri
+            </div>
+            <div className="text-slate-400 text-xs">Gümrük, Incoterms, KDV iadesi ve devlet destekleri hakkında teknik içerikler</div>
+            <div className="text-turkish-red text-xs font-medium mt-3">Tüm Rehberler →</div>
+          </Link>
+        </div>
+      </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://exporthub.com.tr/" },
+              { "@type": "ListItem", position: 2, name: "Rehberler", item: "https://exporthub.com.tr/rehberler" },
+              { "@type": "ListItem", position: 3, name: rehber.baslik, item: `https://exporthub.com.tr/rehberler/${params.slug}` },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

@@ -18,8 +18,16 @@ import { qaTesterAgent } from "./agents/qa-tester.js";
 import { remotionSpecialistAgent } from "./agents/remotion-specialist.js";
 import { uxDesignerAgent } from "./agents/ux-designer.js";
 import { siteAuditorAgent } from "./agents/site-auditor.js";
+import { revisionCoordinatorAgent } from "./agents/revision-coordinator.js";
+import { performanceReviewerAgent } from "./agents/performance-reviewer.js";
 import { validateTaskFlow, getRequiredApprovers } from "./workflow-rules.js";
 import { getMockResponse } from "./mocks.js";
+import { readFileSync, readdirSync } from "fs";
+import { join } from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const PROJECT_ROOT = join(dirname(fileURLToPath(import.meta.url)), "../../../..");
 
 const AGENTS: Record<AgentId, AgentConfig> = {
   "project-manager": projectManagerAgent,
@@ -34,6 +42,8 @@ const AGENTS: Record<AgentId, AgentConfig> = {
   "remotion-specialist": remotionSpecialistAgent,
   "ux-designer": uxDesignerAgent,
   "site-auditor": siteAuditorAgent,
+  "revision-coordinator": revisionCoordinatorAgent,
+  "performance-reviewer": performanceReviewerAgent,
 };
 
 export class ExportHubOrchestrator {
@@ -45,7 +55,7 @@ export class ExportHubOrchestrator {
     this.isDemoMode = !apiKey;
     this.client = apiKey ? new Anthropic({ apiKey }) : null;
     for (const agentId of Object.keys(AGENTS) as AgentId[]) {
-      this.conversationHistory.set(agentId, []);
+      this.conversationHistory.set(agentId as AgentId, []);
     }
   }
 
@@ -77,13 +87,32 @@ export class ExportHubOrchestrator {
     const currentMessages = [...messages];
 
     while (continueLoop) {
-      const response = await this.client!.messages.create({
-        model: agent.model,
-        max_tokens: 4096,
-        system: agent.systemPrompt,
-        tools: agent.tools.length > 0 ? agent.tools : undefined,
-        messages: currentMessages,
-      });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let response: any;
+      let retries = 0;
+      while (true) {
+        try {
+          response = await this.client!.messages.create({
+            model: agent.model,
+            max_tokens: 4096,
+            system: agent.systemPrompt,
+            tools: agent.tools.length > 0 ? agent.tools : undefined,
+            messages: currentMessages,
+          });
+          break;
+        } catch (err: unknown) {
+          const e = err as { status?: number; headers?: { get?: (k: string) => string | null } };
+          if (e?.status === 429 && retries < 3) {
+            const retryAfter = parseInt(e.headers?.get?.("retry-after") ?? "60", 10);
+            const wait = (retryAfter + 2) * 1000;
+            process.stderr.write(`  ⏳ Rate limit — ${retryAfter + 2}s bekleniyor...\n`);
+            await new Promise((r) => setTimeout(r, wait));
+            retries++;
+          } else {
+            throw err;
+          }
+        }
+      }
 
       const assistantContent: Anthropic.ContentBlock[] = response.content;
       currentMessages.push({ role: "assistant", content: assistantContent });
@@ -144,17 +173,42 @@ export class ExportHubOrchestrator {
     const result = await this.runAgent(task.to, task.payload.instruction as string, task.payload);
 
     if (requiredApprovers.length > 0) {
-      const approvalResult = await this.runAgent(
-        requiredApprovers[0],
-        `Lütfen şu içeriği teknik doğruluk açısından incele ve onayla:\n\n${result.output}`,
-        { original_task: task.taskType }
-      );
+      const MAX_REVISIONS = 3;
+      let approved = false;
+      let revisionCount = 0;
+      let currentOutput = result.output;
+      let approvalNote = "";
+      let currentInstruction = task.payload.instruction as string;
+
+      while (!approved && revisionCount <= MAX_REVISIONS) {
+        const approvalResult = await this.runAgent(
+          requiredApprovers[0],
+          `Lütfen şu içeriği teknik doğruluk açısından incele ve onayla:\n\n${currentOutput}`,
+          { original_task: task.taskType }
+        );
+        approvalNote = approvalResult.output;
+        approved = !approvalNote.toLowerCase().includes("onaylamıyorum");
+
+        if (!approved && revisionCount < MAX_REVISIONS) {
+          const revisionResult = await this.runAgent(
+            "revision-coordinator",
+            `Red gerekçesi:\n${approvalNote}\n\nReddedilen içerik:\n${currentOutput}\n\nRevizyon talimatı hazırla ve Content Marketing'e ver. Bu tur ${revisionCount + 1}/3.`,
+          );
+          currentInstruction = revisionResult.output;
+          const revisedResult = await this.runAgent(task.to, currentInstruction);
+          currentOutput = revisedResult.output;
+          revisionCount++;
+        } else {
+          break;
+        }
+      }
 
       return {
         ...result,
-        approved: !approvalResult.output.toLowerCase().includes("onaylamıyorum"),
-        approvedBy: requiredApprovers[0],
-        metadata: { approvalNote: approvalResult.output },
+        output: currentOutput,
+        approved,
+        approvedBy: approved ? requiredApprovers[0] : undefined,
+        metadata: { approvalNote, revisionCount },
       };
     }
 
@@ -182,6 +236,48 @@ export class ExportHubOrchestrator {
       );
 
       return `[${AGENTS[targetAgentId].nameTR} yanıtı]\n${delegatedResult.output}`;
+    }
+
+    if (toolName === "read_file") {
+      const filePath = join(PROJECT_ROOT, input.path as string);
+      try {
+        const content = readFileSync(filePath, "utf-8");
+        return `[Dosya: ${input.path}]\n${content.slice(0, 8000)}${content.length > 8000 ? "\n... (truncated)" : ""}`;
+      } catch {
+        return `[HATA] Dosya okunamadı: ${input.path}`;
+      }
+    }
+
+    if (toolName === "list_pages") {
+      const dir = input.dir as string | undefined ?? "packages/web/app";
+      const fullDir = join(PROJECT_ROOT, dir);
+      try {
+        const entries = readdirSync(fullDir, { withFileTypes: true });
+        const list = entries.map((e) => `${e.isDirectory() ? "📁" : "📄"} ${e.name}`).join("\n");
+        return `[${dir}]\n${list}`;
+      } catch {
+        return `[HATA] Dizin okunamadı: ${dir}`;
+      }
+    }
+
+    if (toolName === "check_seo") {
+      const filePath = join(PROJECT_ROOT, input.path as string);
+      try {
+        const content = readFileSync(filePath, "utf-8");
+        const title = content.match(/title[:\s]+["'`]([^"'`]+)/)?.[1] ?? "—";
+        const description = content.match(/description[:\s]+["'`]([^"'`]+)/)?.[1] ?? "—";
+        const h1s = [...content.matchAll(/<h1[^>]*>([^<]+)/g)].map((m) => m[1].trim());
+        const h2s = [...content.matchAll(/<h2[^>]*>([^<]+)/g)].map((m) => m[1].trim());
+        const hasSchema = content.includes("application/ld+json");
+        return `[SEO Analizi: ${input.path}]
+Title: ${title}
+Description: ${description}
+H1'ler: ${h1s.join(", ") || "—"}
+H2'ler: ${h2s.slice(0, 5).join(", ") || "—"}
+Schema markup: ${hasSchema ? "✅ var" : "❌ yok"}`;
+      } catch {
+        return `[HATA] Dosya analiz edilemedi: ${input.path}`;
+      }
     }
 
     if (toolName === "validate_content" || toolName === "lookup_regulation") {

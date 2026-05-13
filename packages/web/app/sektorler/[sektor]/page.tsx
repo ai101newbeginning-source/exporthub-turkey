@@ -35,10 +35,10 @@ export async function generateMetadata({
   params: { sektor: string };
 }): Promise<Metadata> {
   const sector = getSector(params.sektor);
-  if (!sector) return { title: "Sektör Bulunamadı" };
+  if (!sector) return { title: "Sektör Bulunamadı", robots: { index: false, follow: false } };
   return {
-    title: `${sector.ad} İhracatı 2024 — Türkiye`,
-    description: sector.aciklama,
+    title: `Türkiye ${sector.ad} İhracatı 2024 — Veriler ve Pazar Analizi`,
+    description: `Türkiye ${sector.ad} sektörü ihracat verileri 2024. $${sector.toplamIhracat2024} milyar USD, %${sector.buyumeOrani2024} büyüme. ${sector.topIller.slice(0, 3).join(", ")} başlıca ihracat merkezleri. TÜİK/TİM verileri.`,
   };
 }
 
@@ -94,7 +94,9 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
       {/* Header */}
       <div className="mb-10 animate-fade-up">
         <div className="text-turkish-red text-sm font-semibold mb-2">SEKTÖR ANALİZİ · 2024</div>
-        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">{sector.ad}</h1>
+        <h1 className="text-4xl font-extrabold text-slate-900 mb-3">
+          Türkiye {sector.ad} İhracatı 2024 — Veriler ve Pazar Analizi
+        </h1>
         <p className="text-slate-400 max-w-2xl leading-relaxed">{sector.aciklama}</p>
       </div>
 
@@ -126,7 +128,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
       <div className="grid lg:grid-cols-2 gap-6 mb-6">
         {/* Product Groups with Bar Chart */}
         <div className="card-dark p-6 animate-fade-up delay-200">
-          <h2 className="text-base font-semibold text-slate-900 mb-5">Ürün Grubu Dağılımı</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-5">{sector.ad} Ürün Grubu Dağılımı</h2>
           <div className="space-y-4">
             {sector.urunGruplari.map((u, i) => (
               <div key={u.ad}>
@@ -154,7 +156,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
 
         {/* Top Export Countries */}
         <div className="card-dark p-6 animate-fade-up delay-300">
-          <h2 className="text-base font-semibold text-slate-900 mb-5">Başlıca İhracat Pazarları</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-5">{sector.ad} Başlıca İhracat Pazarları</h2>
           <div className="space-y-3">
             {sector.topUlkeler.map((ulke, i) => (
               <div key={ulke} className="flex items-start gap-3">
@@ -218,6 +220,21 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
           })}
         </div>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://exporthub.com.tr/" },
+              { "@type": "ListItem", position: 2, name: "Sektörler", item: "https://exporthub.com.tr/sektorler" },
+              { "@type": "ListItem", position: 3, name: sector.ad, item: `https://exporthub.com.tr/sektorler/${params.sektor}` },
+            ],
+          }),
+        }}
+      />
 
       {/* CTA row */}
       <div className="grid sm:grid-cols-2 gap-5 animate-fade-up delay-500">

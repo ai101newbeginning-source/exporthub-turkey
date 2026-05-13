@@ -9,63 +9,98 @@
  *   pnpm dispatch "site denetle"
  *
  * Akış:
- *   İstek → PM intent tespiti → agent seçimi → paralel çalışma → QA → output
+ *   İstek → PM intent tespiti → agent seçimi → paralel çalışma
+ *        → QA kontrolü (blocker var mı?) → PM onayı → output
+ *
+ * Site değiştiren tüm intents'te QA + PM onayı zorunludur.
+ * QA blocker bulursa veya PM onaylamazsa çıktı kullanıcıya sunulmaz.
  */
 
+import "dotenv/config";
 import { ExportHubOrchestrator } from "./orchestrator.js";
+import { logTask } from "./performance-tracker.js";
 import * as readline from "readline";
 
-const INTENT_ROUTES: Record<
-  string,
-  { agents: string[]; parallel: boolean; qaRequired: boolean; desc: string }
-> = {
+interface RouteConfig {
+  agents: string[];
+  parallel: boolean;
+  qaRequired: boolean;
+  orchestratorApproval: boolean;
+  desc: string;
+}
+
+// orchestratorApproval: true olan intents'lerde QA + PM onayı zorunlu.
+// Her ikisi de geçmeden çıktı kullanıcıya sunulmaz.
+const INTENT_ROUTES: Record<string, RouteConfig> = {
   tasarim: {
     agents: ["ux-designer", "frontend-dev"],
     parallel: true,
     qaRequired: true,
+    orchestratorApproval: true,
     desc: "Tasarım, renkler, layout, UI/UX değişiklikleri",
   },
   veri: {
     agents: ["data-analyst"],
     parallel: false,
-    qaRequired: false,
+    qaRequired: true,
+    orchestratorApproval: true,
     desc: "Veri üretimi, JSON güncelleme, istatistik",
   },
   icerik: {
     agents: ["content-marketing", "senior-export-expert"],
     parallel: true,
-    qaRequired: false,
+    qaRequired: true,
+    orchestratorApproval: true,
     desc: "Metin, açıklama, FAQ, Türkçe içerik",
   },
   seo: {
     agents: ["seo-growth", "content-marketing"],
     parallel: true,
-    qaRequired: false,
+    qaRequired: true,
+    orchestratorApproval: true,
     desc: "SEO, metadata, arama optimizasyonu",
   },
   denetim: {
     agents: ["site-auditor", "qa-tester"],
     parallel: true,
     qaRequired: false,
-    desc: "Site denetimi, kalite kontrol",
+    orchestratorApproval: false,
+    desc: "Site denetimi, kalite kontrol (salt analiz)",
   },
   ozellik: {
     agents: ["project-manager", "frontend-dev", "data-analyst"],
     parallel: false,
     qaRequired: true,
+    orchestratorApproval: true,
     desc: "Yeni özellik geliştirme",
   },
   performans: {
     agents: ["frontend-dev", "qa-tester"],
     parallel: true,
-    qaRequired: false,
+    qaRequired: true,
+    orchestratorApproval: true,
     desc: "Performans, animasyon, bundle optimizasyonu",
   },
   genel: {
     agents: ["project-manager"],
     parallel: false,
     qaRequired: false,
+    orchestratorApproval: false,
     desc: "Genel sorular, planlama",
+  },
+  rapor: {
+    agents: ["performance-reviewer", "site-auditor"],
+    parallel: true,
+    qaRequired: false,
+    orchestratorApproval: false,
+    desc: "Performans raporu ve site denetimi",
+  },
+  revize: {
+    agents: ["revision-coordinator"],
+    parallel: false,
+    qaRequired: false,
+    orchestratorApproval: false,
+    desc: "Reddedilen içeriği revize et",
   },
 };
 
@@ -81,8 +116,13 @@ Kullanıcı isteğini analiz et ve EN UYGUN intent kategorisini seç:
 - performans: Animasyon, yükleme hızı, bundle, Core Web Vitals
 - genel: Planlama, koordinasyon, genel soru
 
+SADECE şu 10 kategoriden birini seç, başka kategori üretme:
+tasarim | veri | icerik | seo | denetim | ozellik | performans | genel | rapor | revize
+
 Sadece şu JSON formatında yanıt ver (başka hiçbir şey yazma):
 {"intent":"<kategori>","reason":"<neden bu kategori, 1 cümle>"}`;
+
+const VALID_INTENTS = new Set(Object.keys(INTENT_ROUTES));
 
 async function detectIntent(
   orchestrator: ExportHubOrchestrator,
@@ -96,7 +136,9 @@ async function detectIntent(
     const match = result.output.match(/\{[^}]+\}/);
     if (match) {
       const parsed = JSON.parse(match[0]);
-      return parsed.intent ?? "genel";
+      const intent = parsed.intent as string;
+      // Sadece geçerli route'ları kabul et
+      if (intent && VALID_INTENTS.has(intent)) return intent;
     }
   } catch {
     // fallback: keyword matching
@@ -108,14 +150,17 @@ async function detectIntent(
   if (/veri|json|data|istatistik|rakam|sayı|il|sektör ekle|güncelle/.test(req)) return "veri";
   if (/yaz|metin|içerik|açıklama|faq|rehber|türkçe/.test(req)) return "icerik";
   if (/seo|meta|başlık|arama|google|index/.test(req)) return "seo";
-  if (/denetim|test|audit|kontrol|bug|hata/.test(req)) return "denetim";
+  if (/denet|test|audit|kontrol|bug|hata/.test(req)) return "denetim";
   if (/animasyon|performans|hız|yükleme|bundle/.test(req)) return "performans";
+  if (/rapor|performans raporu|metrik|istatistik|özet/.test(req)) return "rapor";
+  if (/revize|revizyon|düzelt|red|reddedil/.test(req)) return "revize";
   return "genel";
 }
 
 async function dispatch(request: string): Promise<void> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   const orchestrator = new ExportHubOrchestrator(apiKey);
+  const startTime = Date.now();
 
   console.log("\n═══════════════════════════════════════════");
   console.log("🎯  ExportHub Dispatch");
@@ -152,31 +197,133 @@ async function dispatch(request: string): Promise<void> {
     }
   }
 
-  // 3. QA kontrolü
+  // 3. QA Kontrolü — blocker varsa dur
+  let qaApproved = true;
+  let qaOutput = "";
   if (route.qaRequired) {
-    console.log("\n🔬  QA Tester doğruluyor...");
-    const qaInput = `Şu agent çıktılarını ExportHub Türkiye projesi için kalite ve tutarlılık açısından değerlendir:\n\n${Object.entries(results)
-      .map(([id, out]) => `[${id}]\n${out}`)
-      .join("\n\n")}`;
+    console.log("\n🔬  QA Tester inceliyor...");
+    const qaInput = [
+      `İstek: "${request}"`,
+      `\nAgent çıktılarını ExportHub Türkiye projesi için incele.`,
+      `Kritik bir sorun (blocker) varsa "BLOCKER:" ön ekiyle belirt.`,
+      `Sorun yoksa "QA ONAYLANDI" ile başla.\n`,
+      ...Object.entries(results).map(([id, out]) => `[${id}]\n${out}`),
+    ].join("\n\n");
+
     const qaResult = await orchestrator.runAgent("qa-tester", qaInput);
-    results["qa-tester"] = qaResult.output;
-    console.log("  ✓ QA tamamlandı");
+    qaOutput = qaResult.output;
+    results["qa-tester"] = qaOutput;
+
+    const hasBlocker = /BLOCKER:|KRİTİK HATA:|ENGEL:|STOP:/i.test(qaOutput);
+    if (hasBlocker) {
+      qaApproved = false;
+      console.log("  ✗ QA — KRİTİK SORUN BULUNDU");
+    } else {
+      console.log("  ✓ QA geçti");
+    }
   }
 
-  // 4. Output
-  console.log("\n═══════════════════════════════════════════");
-  console.log("📋  AGENT ÇIKTILARI");
-  console.log("═══════════════════════════════════════════\n");
+  // QA blocker — kullanıcıya çıktı gösterme, sadece QA raporunu sun
+  if (!qaApproved) {
+    console.log("\n" + "═".repeat(43));
+    console.log("🚫  QA BLOCKER — ÇIKTI DURDURULDU");
+    console.log("═".repeat(43));
+    console.log("\nAşağıdaki sorunlar giderilmeden değişiklikler uygulanamaz:\n");
+    console.log(qaOutput.trim());
+    console.log("\n" + "─".repeat(43));
+    console.log("💡  Sorunu giderip tekrar dispatch çalıştırın.");
+    console.log("═".repeat(43) + "\n");
+    logMetric({ intent, agents: route.agents, startTime, approved: false, revisionCount: 0, results });
+    return;
+  }
 
+  // 4. Orchestrator (PM) Onayı — PM onaylamazsa dur
+  let pmApproved = true;
+  let pmOutput = "";
+  if (route.orchestratorApproval) {
+    console.log("\n🏛️  Proje Yöneticisi onay veriyor...");
+    const pmInput = [
+      `İstek: "${request}"`,
+      `\nAşağıdaki agent çıktılarını ve QA raporunu gözden geçir.`,
+      `Uygulamaya hazır mı? "ONAYLANDI" veya "ONAYLANMADI: <gerekçe>" ile yanıtla.\n`,
+      ...Object.entries(results).map(([id, out]) => `[${id}]\n${out}`),
+    ].join("\n\n");
+
+    const pmResult = await orchestrator.runAgent("project-manager", pmInput);
+    pmOutput = pmResult.output;
+
+    pmApproved = /ONAYLANDI/i.test(pmOutput) && !/ONAYLANMADI/i.test(pmOutput);
+    if (pmApproved) {
+      console.log("  ✓ PM onayladı");
+    } else {
+      console.log("  ✗ PM — ONAYLAMADI");
+    }
+  }
+
+  // PM onaylamadı — itirazlarını göster, çıktı sunma
+  if (!pmApproved) {
+    console.log("\n" + "═".repeat(43));
+    console.log("⛔  PM ONAYI REDDEDİLDİ — ÇIKTI DURDURULDU");
+    console.log("═".repeat(43));
+    console.log("\nProje Yöneticisi'nin itirazları:\n");
+    console.log(pmOutput.trim());
+    console.log("\n" + "─".repeat(43));
+    console.log("💡  İtirazları giderip tekrar dispatch çalıştırın.");
+    console.log("═".repeat(43) + "\n");
+    logMetric({ intent, agents: route.agents, startTime, approved: false, revisionCount: 0, results });
+    return;
+  }
+
+  // 5. Tüm kapılar geçildi — çıktıyı sun
+  console.log("\n" + "═".repeat(43));
+  console.log("✅  QA ONAYLADI  |  PM ONAYLADI  |  YEŞİL IŞIK");
+  console.log("═".repeat(43));
+  console.log("📋  AGENT ÇIKTILARI — UYGULAMAYA HAZIR\n");
+
+  // QA ve PM çıktılarını ayrı göster, asıl agent çıktılarını öne çıkar
+  const reviewAgents = new Set(["qa-tester", "project-manager"]);
   for (const [agentId, output] of Object.entries(results)) {
+    if (reviewAgents.has(agentId)) continue;
     console.log(`┌─ ${agentId.toUpperCase()} ${"─".repeat(Math.max(0, 35 - agentId.length))}┐`);
     console.log(output.trim());
     console.log(`└${"─".repeat(43)}┘\n`);
   }
 
-  console.log("═══════════════════════════════════════════");
-  console.log("✅  Dispatch tamamlandı. Yukarıdaki çıktıları uygula.");
-  console.log("═══════════════════════════════════════════\n");
+  if (results["qa-tester"]) {
+    console.log("─".repeat(43));
+    console.log("🔬  QA NOTU:");
+    console.log(results["qa-tester"].trim());
+  }
+
+  console.log("\n" + "═".repeat(43));
+  console.log("⬆️  Yukarıdaki 📁 DOSYA DEĞİŞİKLİKLERİ bölümlerini uygula.");
+  console.log("═".repeat(43) + "\n");
+
+  logMetric({ intent, agents: route.agents, startTime, approved: true, revisionCount: 0, results });
+}
+
+function logMetric(opts: {
+  intent: string;
+  agents: string[];
+  startTime: number;
+  approved: boolean;
+  revisionCount: number;
+  results: Record<string, string>;
+}): void {
+  const totalOutput = Object.values(opts.results).join("");
+  try {
+    logTask({
+      timestamp: new Date().toISOString(),
+      intent: opts.intent,
+      agents: opts.agents,
+      durationMs: Date.now() - opts.startTime,
+      approved: opts.approved,
+      revisionCount: opts.revisionCount,
+      outputLength: totalOutput.length,
+    });
+  } catch {
+    // Metrik kaydı başarısız olursa dispatch'i engelleme
+  }
 }
 
 // CLI veya interaktif mod

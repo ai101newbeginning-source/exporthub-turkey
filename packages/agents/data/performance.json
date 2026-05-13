@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2026-05-13T07:06:48.381Z",
+    "intent": "tasarim",
+    "agents": [
+      "ux-designer",
+      "frontend-dev"
+    ],
+    "durationMs": 187417,
+    "approved": false,
+    "revisionCount": 0,
+    "outputLength": 29448
+  },
+  {
+    "timestamp": "2026-05-13T08:14:11.601Z",
+    "intent": "denetim",
+    "agents": [
+      "site-auditor",
+      "qa-tester"
+    ],
+    "durationMs": 893229,
+    "approved": true,
+    "revisionCount": 0,
+    "outputLength": 19136
+  },
+  {
+    "timestamp": "2026-05-13T08:42:06.139Z",
+    "intent": "tasarim",
+    "agents": [
+      "ux-designer",
+      "frontend-dev"
+    ],
+    "durationMs": 1082862,
+    "approved": false,
+    "revisionCount": 0,
+    "outputLength": 16248
+  }
+]

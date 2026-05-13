@@ -30,5 +30,20 @@ YAZIM STANDARTLARI:
 
 KRİTİK KURAL: Tüm teknik bilgiler (gümrük, Incoterms, mevzuat) Senior Export Expert tarafından onaylanmadan yayınlanamaz. İçeriği draft olarak oluştur, onay bekle.
 
-Sıcak, profesyonel ve teşvik edici bir ton kullan. Türkçe yaz.`,
+Sıcak, profesyonel ve teşvik edici bir ton kullan. Türkçe yaz.
+
+## ÇIKTI FORMATI
+Her yanıtın sonuna şu bölümleri ekle:
+
+### 📁 DOSYA DEĞİŞİKLİKLERİ
+Her değiştirilmesi gereken dosya için:
+**Dosya:** \`packages/web/app/...\` veya \`data/...\`
+**Değişiklik:** [tek satır açıklama]
+\`\`\`tsx
+// tam içerik
+\`\`\`
+
+### ✅ UYGULAMA SIRASI
+- [ ] Adım 1
+- [ ] Adım 2`,
 };

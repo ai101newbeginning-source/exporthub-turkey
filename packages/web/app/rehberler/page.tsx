@@ -129,6 +129,65 @@ export default function RehberlerPage() {
         </p>
       </div>
 
+      {/* Profil Bazlı Rehber Seçici */}
+      <div className="mb-12">
+        <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-4">Profilinizi Seçin</div>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {[
+            {
+              baslik: "İlk İhracatımı Yapacağım",
+              aciklama: "Hiç ihracat yapmadıysanız buradan başlayın.",
+              renk: "border-emerald-400/30 hover:border-emerald-400/60",
+              badge: "text-emerald-400 bg-emerald-400/10",
+              rehberler: [
+                { slug: "ilk-ihracat", ad: "10 Adımda İlk İhracat" },
+                { slug: "gumruk-surecleri", ad: "Gümrük Süreçleri" },
+                { slug: "incoterms-rehberi", ad: "Incoterms 2020 Rehberi" },
+              ],
+            },
+            {
+              baslik: "Yeni Pazar Arıyorum",
+              aciklama: "Mevcut ihracatınızı yeni ülkelere genişletin.",
+              renk: "border-sky-400/30 hover:border-sky-400/60",
+              badge: "text-sky-400 bg-sky-400/10",
+              rehberler: [
+                { slug: "pazar-arastirmasi", ad: "Pazar Araştırması" },
+                { slug: "akreditif", ad: "Akreditif Rehberi" },
+                { slug: "uluslararasi-sozlesme", ad: "Satış Sözleşmeleri" },
+              ],
+            },
+            {
+              baslik: "Mevcut İhracatımı Büyüteceğim",
+              aciklama: "Finansman ve teşviklerden maksimum faydalanın.",
+              renk: "border-purple-400/30 hover:border-purple-400/60",
+              badge: "text-purple-400 bg-purple-400/10",
+              rehberler: [
+                { slug: "devlet-destekleri", ad: "Devlet Destekleri" },
+                { slug: "kdv-istisnasi", ad: "KDV İadesi" },
+                { slug: "lojistik-secimi", ad: "Lojistik Optimizasyonu" },
+              ],
+            },
+          ].map((profil) => (
+            <div key={profil.baslik} className={`card-dark p-5 border ${profil.renk} transition-all`}>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${profil.badge} inline-block mb-3`}>
+                {profil.baslik}
+              </span>
+              <p className="text-slate-400 text-xs mb-4">{profil.aciklama}</p>
+              <ul className="space-y-2">
+                {profil.rehberler.map((r) => (
+                  <li key={r.slug}>
+                    <Link href={`/rehberler/${r.slug}`} className="text-slate-700 text-sm hover:text-turkish-red transition-colors flex items-center gap-1.5">
+                      <span className="text-turkish-red text-xs">→</span>
+                      {r.ad}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Öne Çıkanlar */}
       <div className="mb-10">
         <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-4">Başlangıç Noktası</div>

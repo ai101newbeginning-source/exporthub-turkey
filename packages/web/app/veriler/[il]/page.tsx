@@ -80,13 +80,27 @@ const DEFAULT_REHBERLER = [
   { slug: "pazar-arastirmasi", baslik: "Pazar Araştırması ve Alıcı Doğrulama" },
 ];
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  const dir = join(process.cwd(), "../../data/provinces");
+  try {
+    return readdirSync(dir)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => ({ il: f.replace(".json", "") }));
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: { il: string };
 }): Promise<Metadata> {
   const province = getProvince(params.il);
-  if (!province) return { title: "İl Bulunamadı" };
+  if (!province)
+    return { title: "İl Bulunamadı", robots: { index: false, follow: false } };
   const latest = Object.values(province.yillikIhracat).at(-1)?.toFixed(1);
   return {
     title: `${province.il} İhracat Verileri 2024-2026 — Sektörler, Pazarlar, Rakamlar`,
@@ -140,7 +154,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900">
-              {province.il}
+              {province.il} İhracat Verileri {latestYear}
             </h1>
             <p className="text-slate-400 mt-2 max-w-xl text-base leading-relaxed">
               {province.aciklama}
@@ -158,7 +172,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
       {/* Animasyon */}
       <div className="mb-10 animate-fade-up delay-100">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">İhracat Trendi Animasyonu</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">{province.il} İhracat Trendi (2020–{latestYear})</h2>
         <ProvincePlayer province={province.il} data={trendData} colorScheme="red" />
       </div>
 
@@ -192,7 +206,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
         {/* Sektörler — linkli */}
         <div className="card-dark p-6">
-          <h2 className="text-base font-semibold text-slate-900 mb-4">Öne Çıkan Sektörler</h2>
+          <h2 className="text-base font-semibold text-slate-900 mb-4">{province.il} Öne Çıkan Sektörler</h2>
           <div className="space-y-3">
             {province.topSektorler.map((s, i) => {
               const slug = SEKTOR_SLUG[s.ad];
@@ -230,7 +244,7 @@ export default function IlPage({ params }: { params: { il: string } }) {
 
       {/* Pazarlar */}
       <div className="card-dark p-6 mb-6 animate-fade-up delay-300">
-        <h2 className="text-base font-semibold text-slate-900 mb-4">Başlıca İhracat Pazarları</h2>
+        <h2 className="text-base font-semibold text-slate-900 mb-4">{province.il} Başlıca İhracat Pazarları</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {province.topUlkeler.map((u, i) => (
             <div key={u.ulke} className="text-center p-4 bg-slate-100/50 rounded-lg">
@@ -317,6 +331,20 @@ export default function IlPage({ params }: { params: { il: string } }) {
         </div>
       </div>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://exporthub.com.tr/" },
+              { "@type": "ListItem", position: 2, name: "İhracat Verileri", item: "https://exporthub.com.tr/veriler" },
+              { "@type": "ListItem", position: 3, name: province.il, item: `https://exporthub.com.tr/veriler/${province.id}` },
+            ],
+          }),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

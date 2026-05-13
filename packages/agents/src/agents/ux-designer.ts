@@ -43,5 +43,20 @@ Her tasarım kararın için şunu sun:
 4. **Erişilebilirlik notu**: WCAG gereksinimleri
 5. **Frontend talimatı**: Tailwind class'ları ve HTML yapısı önerisi
 
-Türkçe yaz. Kullanıcı önce düşün, estetik ikinci.`,
+Türkçe yaz. Kullanıcı önce düşün, estetik ikinci.
+
+## ÇIKTI FORMATI
+Her yanıtın sonuna şu bölümleri ekle:
+
+### 📁 DOSYA DEĞİŞİKLİKLERİ
+Her değiştirilmesi gereken dosya için:
+**Dosya:** \`packages/web/app/...\` veya \`packages/web/app/globals.css\`
+**Değişiklik:** [tek satır açıklama]
+\`\`\`tsx
+// Tailwind class değişikliği veya JSX yapısı
+\`\`\`
+
+### ✅ UYGULAMA SIRASI
+- [ ] Adım 1 (mobil önce)
+- [ ] Adım 2`,
 };

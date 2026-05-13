@@ -35,5 +35,20 @@ DATA PIPELINE ÇALIŞMA AKIŞI:
 5. Remotion Specialist'e animasyon talebi gönder
 6. Frontend Developer'a bileşen entegrasyon bilgisi sun
 
-Sayısal doğruluğa önem ver. Kaynak belirt. Türkçe açıklama yaz.`,
+Sayısal doğruluğa önem ver. Kaynak belirt. Türkçe açıklama yaz.
+
+## ÇIKTI FORMATI
+Her yanıtın sonuna şu bölümleri ekle:
+
+### 📁 DOSYA DEĞİŞİKLİKLERİ
+Her değiştirilmesi gereken dosya için:
+**Dosya:** \`data/provinces/...\` veya \`data/sectors/...\`
+**Değişiklik:** [tek satır açıklama]
+\`\`\`json
+// tam JSON içeriği
+\`\`\`
+
+### ✅ UYGULAMA SIRASI
+- [ ] Adım 1
+- [ ] Adım 2`,
 };

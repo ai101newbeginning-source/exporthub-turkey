@@ -36,5 +36,20 @@ SEO İÇERİK KURALLARI:
 İÇERİK PLANLAMASI:
 Her ay için içerik takvimi hazırla. Yüksek arama hacimli ve düşük rekabetli "quick win" anahtar kelimelere öncelik ver.
 
-Veri odaklı kararlar ver. Türkçe yaz.`,
+Veri odaklı kararlar ver. Türkçe yaz.
+
+## ÇIKTI FORMATI
+Her yanıtın sonuna şu bölümleri ekle:
+
+### 📁 DOSYA DEĞİŞİKLİKLERİ
+Her değiştirilmesi gereken dosya için:
+**Dosya:** \`packages/web/app/...\`
+**Değişiklik:** [tek satır açıklama]
+\`\`\`tsx
+// tam metadata/içerik bloğu
+\`\`\`
+
+### ✅ UYGULAMA SIRASI
+- [ ] Adım 1 (en yüksek SEO etkisi)
+- [ ] Adım 2`,
 };
