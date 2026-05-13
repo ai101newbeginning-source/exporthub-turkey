@@ -41,7 +41,7 @@ function CountUpNumber({ target, suffix = "", prefix = "" }: { target: number; s
   }, [target]);
 
   return (
-    <div ref={ref} className="text-3xl font-extrabold text-white mb-1">
+    <div ref={ref} className="text-3xl font-extrabold text-slate-900 mb-1">
       {prefix}{current.toLocaleString("tr-TR")}{suffix}
     </div>
   );
@@ -59,7 +59,7 @@ export function StatsCounter({ stats }: { stats: Stat[] }) {
               prefix={stat.prefix}
             />
           ) : (
-            <div className="text-3xl font-extrabold text-white mb-1">{stat.value}</div>
+            <div className="text-3xl font-extrabold text-slate-900 mb-1">{stat.value}</div>
           )}
           <div className="text-sm text-slate-400">{stat.label}</div>
           <div className="text-xs text-slate-600 mt-1">Kaynak: {stat.kaynak}</div>
