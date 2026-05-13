@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
-import { ProvincePlayer } from "@/components/remotion/ProvincePlayer";
+import { ProvinceChart } from "@/components/ui/ProvinceChart";
 
 interface ProvinceData {
   id: string;
@@ -170,10 +170,9 @@ export default function IlPage({ params }: { params: { il: string } }) {
         </div>
       </div>
 
-      {/* Animasyon */}
+      {/* Grafik */}
       <div className="mb-10 animate-fade-up delay-100">
-        <h2 className="text-lg font-semibold text-slate-900 mb-4">{province.il} İhracat Trendi (2020–{latestYear})</h2>
-        <ProvincePlayer province={province.il} data={trendData} colorScheme="red" />
+        <ProvinceChart province={province.il} data={trendData} colorScheme="red" />
       </div>
 
       {/* Veri Tabloları */}
