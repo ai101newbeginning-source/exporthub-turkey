@@ -27,7 +27,7 @@ import { join } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-const PROJECT_ROOT = join(dirname(fileURLToPath(import.meta.url)), "../../../..");
+const PROJECT_ROOT = join(dirname(fileURLToPath(import.meta.url)), "../../..");
 
 const AGENTS: Record<AgentId, AgentConfig> = {
   "project-manager": projectManagerAgent,
